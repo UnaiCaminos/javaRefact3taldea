@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 
 
-public class konponenteak extends JFrame {
+public class katalogoa extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -46,7 +46,7 @@ public class konponenteak extends JFrame {
 	private JTextField txtBalorazioa;
 	private JTextField txtId_1;
 
-	public konponenteak() {
+	public katalogoa() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 749, 642);
 		contentPane = new JPanel();
@@ -64,7 +64,7 @@ public class konponenteak extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				konexioaLocal kon=new konexioaLocal();
 				Connection conexion = kon.getConnection();
-				String sql = "SELECT * FROM konponenteak";
+				String sql = "SELECT * FROM katalogoa";
 				Statement st;
 				ResultSet rs;
 				
@@ -129,7 +129,7 @@ public class konponenteak extends JFrame {
 				    prezioa=txtPrezioa.getText();
 				    marka=txtMarka.getText();
 				    balorazioa=txtBalorazioa.getText();
-				    String query ="INSERT INTO erronka.konponenteak"
+				    String query ="INSERT INTO erronka.katalogoa"
 						+ " Values("+id+", '"+mota+"', '"+img+"', '"+modeloa+"', '"+deskribapena+"', "+kantitatea+", '"+berria+"', "+prezioa+",'"+marka+"','"+balorazioa+"')";
 				    Statement stmt;
 				
@@ -152,7 +152,7 @@ public class konponenteak extends JFrame {
 				Connection conexion = kon.getConnection();
 				String Id;
 				Id=textId2.getText();
-				String sql = "SELECT * FROM konponenteak WHERE Id='"+Id+"'";
+				String sql = "SELECT * FROM katalogoa WHERE Id='"+Id+"'";
 				Statement st;
 				ResultSet rs;
 				
@@ -209,7 +209,7 @@ public class konponenteak extends JFrame {
 				    mod2=txtMod2.getText();
 				    mod3=txtMod3.getText();
 				    mod4=txtMod4.getText();
-				    String query ="UPDATE konponenteak SET "+mod1+" ='"+mod2+"', "+mod3+" ='"+mod4+"' WHERE konponenteMota= '"+izn+"'&& Marka='"+marka+"'";
+				    String query ="UPDATE katalogoa SET "+mod1+" ='"+mod2+"', "+mod3+" ='"+mod4+"' WHERE konponenteMota= '"+izn+"'&& Marka='"+marka+"'";
 				    Statement st;
 					st = conexion.createStatement();
 					st .executeUpdate(query);
@@ -335,7 +335,7 @@ public class konponenteak extends JFrame {
 				    Connection conexion = kon.getConnection();
 				    String id;
 				    id=textId2.getText();
-				    String query ="DELETE FROM erronka.konponenteak WHERE id= "+id;
+				    String query ="DELETE FROM erronka.katalogoa WHERE id= "+id;
 				    Statement st;
 					st = conexion.createStatement();
 					st.executeUpdate(query);

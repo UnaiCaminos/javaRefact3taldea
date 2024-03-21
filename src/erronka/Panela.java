@@ -52,7 +52,7 @@ public class Panela extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(user.equals("Laura")||user.equals("Beñat")||user.equals("Martín")||user.equals("Miguel")||user.equals("Javier")||user.equals("Sara")||user.equals("Sergio")||user.equals("Daniel")||user.equals("Juan")) {
 							System.out.println("ONDO DA!");
-							JFrame frame = new konponenteak();
+							JFrame frame = new katalogoa();
 							frame.setVisible(true);
 						}else System.out.println("Baimena ukatua");
 			}

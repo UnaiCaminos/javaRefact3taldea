@@ -111,7 +111,7 @@ public class Inicio extends JFrame {
 							while(rs2.next()) {
 								if(pwd.equals(rs2.getString(4))) {
 									System.out.println("ONDO DA!");
-									administratzailea frame = new administratzailea();
+									langileak frame = new langileak();
 									frame.setVisible(true);
 								}else System.out.println("PASAHITZ OKERRA");
 							}

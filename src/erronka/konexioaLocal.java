@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 public class konexioaLocal {
 	private static String usuario="root";
 	private static String contraseña="1WMG2023";
-    private static String url = "jdbc:mysql://localhost:3306/erronka";
+    private static String url = "jdbc:mysql://localhost:3306/erronkadb";
     private static String BBDD = "com.mysql.cj.jdbc.Driver";
 	
 	static {
