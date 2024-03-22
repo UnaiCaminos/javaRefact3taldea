@@ -47,6 +47,39 @@ public class Inicio extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JButton btnNewButton = new JButton("Sesioa hasi");
+		
+		btnNewButton.setBounds(117, 127, 188, 23);
+		contentPane.add(btnNewButton);
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			        String user,pwd;
+			        user=textUser.getText();
+			        pwd= textPwd.getText();
+			        String kontsulta ="SELECT * FROM erronkadb.langilea WHERE izena='"+user+"'";
+			        konexioaLocal kon=new konexioaLocal();
+					Connection conexion = kon.getConnection();
+					Statement st;
+					ResultSet rs;
+					try {
+						st=conexion.createStatement();
+						rs=st.executeQuery(kontsulta);
+						while(rs.next()) {
+							if(pwd.equals(rs.getString(2))) {
+								System.out.println("ONDO DA!");
+								Panela frame = new Panela(user);
+								frame.setVisible(true);
+							}else System.out.println("PASAHITZ OKERRA");
+						}
+						
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}	
+					
+			}
+		});
 		textUser = new JTextField();
 		textUser.setBounds(219, 65, 86, 20);
 		contentPane.add(textUser);
@@ -56,11 +89,6 @@ public class Inicio extends JFrame {
 		textPwd.setBounds(219, 96, 86, 20);
 		contentPane.add(textPwd);
 		textPwd.setColumns(10);
-		
-		JButton btnNewButton = new JButton("Sesioa hasi");
-	
-		btnNewButton.setBounds(117, 127, 188, 23);
-		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("Erabiltzailea");
 		lblNewLabel.setBackground(new Color(0, 0, 255));
@@ -73,55 +101,5 @@ public class Inicio extends JFrame {
 		lblNewLabel_1.setForeground(new Color(0, 0, 0));
 		lblNewLabel_1.setBounds(117, 99, 156, 14);
 		contentPane.add(lblNewLabel_1);
-		
-		
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			        String user,pwd;
-			        user=textUser.getText();
-			        pwd= textPwd.getText();
-			        String kontsulta ="SELECT DISTINCT * FROM langileak WHERE izena='"+user+"' && admin= 0 && nan='"+pwd+"'";
-			        konexioaLocal kon=new konexioaLocal();
-					Connection conexion = kon.getConnection();
-					Statement st;
-					ResultSet rs;
-					try {
-						st=conexion.createStatement();
-						rs=st.executeQuery(kontsulta);
-						while(rs.next()) {
-							if(pwd.equals(rs.getString(4))) {
-								System.out.println("ONDO DA!");
-								Panela frame = new Panela(user);
-								frame.setVisible(true);
-							}else System.out.println("PASAHITZ OKERRA");
-						}
-						
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					 String kontsulta2 ="SELECT DISTINCT * FROM langileak WHERE izena='"+user+"' && admin=1 && nan='"+pwd+"'";
-				        konexioaLocal kon2=new konexioaLocal();
-						Connection conexion2 = kon2.getConnection();
-						Statement st2;
-						ResultSet rs2;
-						try {
-							st2=conexion2.createStatement();
-							rs2=st2.executeQuery(kontsulta2);
-							while(rs2.next()) {
-								if(pwd.equals(rs2.getString(4))) {
-									System.out.println("ONDO DA!");
-									langileak frame = new langileak();
-									frame.setVisible(true);
-								}else System.out.println("PASAHITZ OKERRA");
-							}
-							
-						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}	
-					
-			}
-		});
 	}
 }

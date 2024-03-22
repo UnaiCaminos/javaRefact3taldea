@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 
 
-public class katalogoa extends JFrame {
+public class produktuak extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -46,7 +46,7 @@ public class katalogoa extends JFrame {
 	private JTextField txtBalorazioa;
 	private JTextField txtId_1;
 
-	public katalogoa() {
+	public produktuak() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 749, 642);
 		contentPane = new JPanel();
@@ -64,7 +64,7 @@ public class katalogoa extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				konexioaLocal kon=new konexioaLocal();
 				Connection conexion = kon.getConnection();
-				String sql = "SELECT * FROM katalogoa";
+				String sql = "SELECT * FROM produktuak";
 				Statement st;
 				ResultSet rs;
 				
@@ -129,7 +129,7 @@ public class katalogoa extends JFrame {
 				    prezioa=txtPrezioa.getText();
 				    marka=txtMarka.getText();
 				    balorazioa=txtBalorazioa.getText();
-				    String query ="INSERT INTO erronka.katalogoa"
+				    String query ="INSERT INTO erronka.produktuak"
 						+ " Values("+id+", '"+mota+"', '"+img+"', '"+modeloa+"', '"+deskribapena+"', "+kantitatea+", '"+berria+"', "+prezioa+",'"+marka+"','"+balorazioa+"')";
 				    Statement stmt;
 				
@@ -152,7 +152,7 @@ public class katalogoa extends JFrame {
 				Connection conexion = kon.getConnection();
 				String Id;
 				Id=textId2.getText();
-				String sql = "SELECT * FROM katalogoa WHERE Id='"+Id+"'";
+				String sql = "SELECT * FROM produktuak WHERE Id='"+Id+"'";
 				Statement st;
 				ResultSet rs;
 				
@@ -209,7 +209,7 @@ public class katalogoa extends JFrame {
 				    mod2=txtMod2.getText();
 				    mod3=txtMod3.getText();
 				    mod4=txtMod4.getText();
-				    String query ="UPDATE katalogoa SET "+mod1+" ='"+mod2+"', "+mod3+" ='"+mod4+"' WHERE konponenteMota= '"+izn+"'&& Marka='"+marka+"'";
+				    String query ="UPDATE produktuak SET "+mod1+" ='"+mod2+"', "+mod3+" ='"+mod4+"' WHERE konponenteMota= '"+izn+"'&& Marka='"+marka+"'";
 				    Statement st;
 					st = conexion.createStatement();
 					st .executeUpdate(query);
@@ -222,6 +222,29 @@ public class katalogoa extends JFrame {
 		});
 		btnAktualizatu.setBounds(10, 328, 115, 23);
 		contentPane.add(btnAktualizatu);
+		
+		JButton btnKendu = new JButton("Kendu");
+		btnKendu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+				    konexioaLocal kon=new konexioaLocal();
+				    Connection conexion = kon.getConnection();
+				    String id;
+				    id=textId2.getText();
+				    String query ="DELETE FROM erronka.produktuak WHERE id= "+id;
+				    Statement st;
+					st = conexion.createStatement();
+					st.executeUpdate(query);
+					JOptionPane.showMessageDialog(null, "Datuak ondo ezabatu dira");
+				} catch (SQLException e1) {
+					JOptionPane.showMessageDialog(null, "Datuak ezin dira ezabatu");
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnKendu.setBounds(10, 488, 115, 23);
+		contentPane.add(btnKendu);
+		
 		btnIdinfo.setBounds(10, 279, 89, 23);
 		contentPane.add(btnIdinfo);
 		
@@ -326,28 +349,6 @@ public class katalogoa extends JFrame {
 		txtBalorazioa.setBounds(13, 258, 114, 19);
 		contentPane.add(txtBalorazioa);
 		txtBalorazioa.setColumns(10);
-		
-		JButton btnKendu = new JButton("Kendu");
-		btnKendu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-				    konexioaLocal kon=new konexioaLocal();
-				    Connection conexion = kon.getConnection();
-				    String id;
-				    id=textId2.getText();
-				    String query ="DELETE FROM erronka.katalogoa WHERE id= "+id;
-				    Statement st;
-					st = conexion.createStatement();
-					st.executeUpdate(query);
-					JOptionPane.showMessageDialog(null, "Datuak ondo ezabatu dira");
-				} catch (SQLException e1) {
-					JOptionPane.showMessageDialog(null, "Datuak ezin dira ezabatu");
-					e1.printStackTrace();
-				}
-			}
-		});
-		btnKendu.setBounds(10, 488, 115, 23);
-		contentPane.add(btnKendu);
 		
 		txtId_1 = new JTextField();
 		txtId_1.setText("id");

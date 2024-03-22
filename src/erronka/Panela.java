@@ -3,6 +3,10 @@ package erronka;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,7 +17,7 @@ public class Panela extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JButton btnBiltegia;
+	private JButton btnProduktua;
 
 	public Panela(String user) {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -25,41 +29,99 @@ public class Panela extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnBezeroa = new JButton("Bezeroa");
+		JButton btnBezeroa = new JButton("Langilea");
 		btnBezeroa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(user.equals("Roberto")||user.equals("Celia")||user.equals("Beñat")||user.equals("Martín")||user.equals("Isabel")||user.equals("Carlos")){
-							System.out.println("ONDO DA!");
-							bezeroak frame = new bezeroak();
-							frame.setVisible(true);
-						}else System.out.println("Baimena ukatua");
-			}
-		});
-		btnBezeroa.setBounds(0, 0, 256, 191);
+				    String postua = "Gerentea";
+			        String kontsulta ="SELECT * FROM erronkadb.langilea WHERE izena='"+user+"'";
+			        konexioaLocal kon=new konexioaLocal();
+					Connection conexion = kon.getConnection();
+					Statement st;
+					ResultSet rs;
+					try {
+						st=conexion.createStatement();
+						rs=st.executeQuery(kontsulta);
+						while(rs.next()) {
+							if(postua.equals(rs.getString(8))) {
+								System.out.println("ONDO DA!");
+								langileak frame = new langileak();
+								frame.setVisible(true);
+							}else System.out.println("PASAHITZ OKERRA");
+						}
+						
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}	
+					
+					}
+        });
+		btnBezeroa.setBounds(0, 0, 264, 191);
 		contentPane.add(btnBezeroa);
 		
 		new JButton("Hornitzailea").addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-		        if(user.equals("Celia")||user.equals("Beñat")||user.equals("Raúl")) {
-					Hornitzaileak frame = new Hornitzaileak();
-					frame.setVisible(true);
-					}else System.out.println("Baimena ukatua");
+				String postua = "Jatetxeko superbisatzailea";
+		        String kontsulta ="SELECT * FROM erronkadb.langilea WHERE izena='"+user+"'";
+		        konexioaLocal kon=new konexioaLocal();
+				Connection conexion = kon.getConnection();
+				Statement st;
+				ResultSet rs;
+				try {
+					st=conexion.createStatement();
+					rs=st.executeQuery(kontsulta);
+					while(rs.next()) {
+						if(postua.equals(rs.getString(8))) {
+							System.out.println("ONDO DA!");
+							langileak frame = new langileak();
+							frame.setVisible(true);
+						}else System.out.println("PASAHITZ OKERRA");
+					}
+					
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}	
 			}
 		});
 		
-		btnBiltegia = new JButton("Biltegia");
-		btnBiltegia.addActionListener(new ActionListener() {
+		btnProduktua = new JButton("Produktua");
+		btnProduktua.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(user.equals("Laura")||user.equals("Beñat")||user.equals("Martín")||user.equals("Miguel")||user.equals("Javier")||user.equals("Sara")||user.equals("Sergio")||user.equals("Daniel")||user.equals("Juan")) {
+				String postua = "Gerentea";
+		        String kontsulta ="SELECT * FROM erronkadb.langilea WHERE izena='"+user+"'";
+		        konexioaLocal kon=new konexioaLocal();
+				Connection conexion = kon.getConnection();
+				Statement st;
+				ResultSet rs;
+				try {
+					st=conexion.createStatement();
+					rs=st.executeQuery(kontsulta);
+					while(rs.next()) {
+						if(postua.equals(rs.getString(8))) {
 							System.out.println("ONDO DA!");
-							JFrame frame = new katalogoa();
+							langileak frame = new langileak();
 							frame.setVisible(true);
-						}else System.out.println("Baimena ukatua");
+						}else System.out.println("PASAHITZ OKERRA");
+					}
+					
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}	
 			}
 			
 		});
-		btnBiltegia.setBounds(0, 191, 524, 214);
-		contentPane.add(btnBiltegia);
+		btnProduktua.setBounds(0, 191, 524, 214);
+		contentPane.add(btnProduktua);
+		
+		JButton btnHornitzailea = new JButton("Hornitzailea");
+		btnHornitzailea.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnHornitzailea.setBounds(265, 0, 259, 191);
+		contentPane.add(btnHornitzailea);
 		
 		
 	}
