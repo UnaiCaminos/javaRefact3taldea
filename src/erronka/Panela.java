@@ -122,7 +122,27 @@ public class Panela extends JFrame {
 		btnErreserba = new JButton("Erreserba");
 		btnErreserba.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				String postua = "Anfitrioia";
+		        String kontsulta ="SELECT * FROM erronkadb.langilea WHERE izena='"+user+"'";
+		        konexioaLocal kon=new konexioaLocal();
+				Connection conexion = kon.getConnection();
+				Statement st;
+				ResultSet rs;
+				try {
+					st=conexion.createStatement();
+					rs=st.executeQuery(kontsulta);
+					while(rs.next()) {
+						if(postua.equals(rs.getString(8))) {
+							System.out.println("ONDO DA!");
+							langileak frame = new langileak();
+							frame.setVisible(true);
+						}else System.out.println("PASAHITZ OKERRA");
+					}
+					
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}	
 			}
 		});
 		btnErreserba.setBounds(265, 191, 264, 214);
