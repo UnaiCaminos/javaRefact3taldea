@@ -32,7 +32,7 @@ public class Panela extends JFrame {
 		JButton btnBezeroa = new JButton("Langilea");
 		btnBezeroa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				    String postua = "Gerentea";
+				    String postua = "Jatetxeko superbisatzailea";
 			        String kontsulta ="SELECT * FROM erronkadb.langilea WHERE izena='"+user+"'";
 			        konexioaLocal kon=new konexioaLocal();
 					Connection conexion = kon.getConnection();
@@ -59,9 +59,10 @@ public class Panela extends JFrame {
 		btnBezeroa.setBounds(0, 0, 264, 191);
 		contentPane.add(btnBezeroa);
 		
-		new JButton("Hornitzailea").addActionListener(new ActionListener() {
+		btnProduktua = new JButton("Produktua");
+		btnProduktua.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String postua = "Jatetxeko superbisatzailea";
+				String admin = "1";
 		        String kontsulta ="SELECT * FROM erronkadb.langilea WHERE izena='"+user+"'";
 		        konexioaLocal kon=new konexioaLocal();
 				Connection conexion = kon.getConnection();
@@ -71,7 +72,7 @@ public class Panela extends JFrame {
 					st=conexion.createStatement();
 					rs=st.executeQuery(kontsulta);
 					while(rs.next()) {
-						if(postua.equals(rs.getString(8))) {
+						if(admin.equals(rs.getString(10))) {
 							System.out.println("ONDO DA!");
 							langileak frame = new langileak();
 							frame.setVisible(true);
@@ -83,10 +84,13 @@ public class Panela extends JFrame {
 					e1.printStackTrace();
 				}	
 			}
+			
 		});
+		btnProduktua.setBounds(0, 191, 524, 214);
+		contentPane.add(btnProduktua);
 		
-		btnProduktua = new JButton("Produktua");
-		btnProduktua.addActionListener(new ActionListener() {
+		JButton btnHornitzailea = new JButton("Hornitzailea");
+		btnHornitzailea.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String postua = "Gerentea";
 		        String kontsulta ="SELECT * FROM erronkadb.langilea WHERE izena='"+user+"'";
@@ -109,15 +113,6 @@ public class Panela extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}	
-			}
-			
-		});
-		btnProduktua.setBounds(0, 191, 524, 214);
-		contentPane.add(btnProduktua);
-		
-		JButton btnHornitzailea = new JButton("Hornitzailea");
-		btnHornitzailea.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		btnHornitzailea.setBounds(265, 0, 259, 191);
