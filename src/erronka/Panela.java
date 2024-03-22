@@ -18,6 +18,7 @@ public class Panela extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JButton btnProduktua;
+	private JButton btnErreserba;
 
 	public Panela(String user) {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -86,7 +87,7 @@ public class Panela extends JFrame {
 			}
 			
 		});
-		btnProduktua.setBounds(0, 191, 524, 214);
+		btnProduktua.setBounds(0, 191, 264, 214);
 		contentPane.add(btnProduktua);
 		
 		JButton btnHornitzailea = new JButton("Hornitzailea");
@@ -117,6 +118,15 @@ public class Panela extends JFrame {
 		});
 		btnHornitzailea.setBounds(265, 0, 259, 191);
 		contentPane.add(btnHornitzailea);
+		
+		btnErreserba = new JButton("Erreserba");
+		btnErreserba.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btnErreserba.setBounds(265, 191, 264, 214);
+		contentPane.add(btnErreserba);
 		
 		
 	}
