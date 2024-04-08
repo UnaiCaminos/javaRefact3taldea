@@ -20,6 +20,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
+import java.awt.EventQueue;
 
 public class langileak extends JFrame {
 
