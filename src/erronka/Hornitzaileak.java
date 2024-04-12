@@ -17,7 +17,7 @@ import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
-public class Hornitzaileak extends JFrame {
+public class Hornitzaileak extends pertsona {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -36,18 +36,8 @@ public class Hornitzaileak extends JFrame {
 	private JTextField txtNanNif;
 	private JTextField txtTestua;
 
-	public Hornitzaileak() {
-		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 540, 520);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JButton btnLike = new JButton("Bilatu");
-		btnLike.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+	public void hornitzaileaBilatu() {
+	
 				String like;
 				like=txtLetra.getText();
 				konexioaLocal kon=new konexioaLocal();
@@ -85,18 +75,9 @@ public class Hornitzaileak extends JFrame {
 					showMessageDialog(null, "Konexio arazoak");
 					e1.printStackTrace();
 				}
-			}
-		});
-		btnLike.setBounds(0, 63, 89, 23);
-		contentPane.add(btnLike);
+	}
 		
-		table = new JTable();
-		table.setBounds(135, 0, 379, 353);
-		contentPane.add(table);
-		
-		btnTaula = new JButton("Taula");
-		btnTaula.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void hornitzaileTaulaIkusi() {
 				konexioaLocal kon=new konexioaLocal();
 				Connection conexion = kon.getConnection();
 				String sql = "SELECT * FROM hornitzaileak";
@@ -137,13 +118,8 @@ public class Hornitzaileak extends JFrame {
 					e1.printStackTrace();
 				}
 			}
-		});
-		btnTaula.setBounds(0, 29, 89, 23);
-		contentPane.add(btnTaula);
 		
-		btnGehitu = new JButton("Gehitu");
-		btnGehitu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void hornitzaileaGehitu() {
 				try {
 				    konexioaLocal kon=new konexioaLocal();
 				    Connection conexion = kon.getConnection();
@@ -155,7 +131,7 @@ public class Hornitzaileak extends JFrame {
 				    Id=txtId.getText();
 				    nan=txtNanNif.getText();
 				    testua=txtTestua.getText();
-				    String query ="INSERT INTO erronka.hornitzaileak"
+				    String query ="INSERT INTO erronkadb.hornitzaileak"
 						+ " Values('"+Id+"', '"+tel+"', '"+izn+"', '"+korreoa+"', '"+helbidea+"', '"+nan+"', '"+testua+"')";
 				    Statement stmt;
 				
@@ -167,20 +143,15 @@ public class Hornitzaileak extends JFrame {
 					e1.printStackTrace();
 				}
 			}
-		});
-		btnGehitu.setBounds(0, 124, 89, 23);
-		contentPane.add(btnGehitu);
-		
-		btnNewButton = new JButton("Kendu");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+	
+			public void hornitzaileaKendu(){
 				try {
 				    konexioaLocal kon=new konexioaLocal();
 				    Connection conexion = kon.getConnection();
 				    String izena, Id2;
 				    izena=txtName.getText();
 				    Id2=txtId2.getText();
-				    String query ="DELETE FROM erronka.hornitzaileak WHERE EnpresarenIzena= '"+izena+"'&& id= '"+Id2+"'";
+				    String query ="DELETE FROM erronkadb.hornitzaileak WHERE EnpresarenIzena= '"+izena+"'&& id= '"+Id2+"'";
 				    Statement st;
 					st = conexion.createStatement();
 					st.executeUpdate(query);
@@ -189,71 +160,7 @@ public class Hornitzaileak extends JFrame {
 					JOptionPane.showMessageDialog(null, "Datuak ezin dira ezabatu");
 					e1.printStackTrace();
 				}
-			}
-		});
-		btnNewButton.setBounds(0, 311, 89, 23);
-		contentPane.add(btnNewButton);
 		
-		txtLetra = new JTextField();
-		txtLetra.setText("Sartu  lehenengo letra(k)");
-		txtLetra.setBounds(0, 92, 152, 23);
-		contentPane.add(txtLetra);
-		txtLetra.setColumns(10);
-		
-		txtIzena = new JTextField();
-		txtIzena.setText("Izena");
-		txtIzena.setBounds(0, 196, 125, 20);
-		contentPane.add(txtIzena);
-		txtIzena.setColumns(10);
-		
-		txtHelbidea = new JTextField();
-		txtHelbidea.setText("Helbidea");
-		txtHelbidea.setBounds(0, 243, 125, 20);
-		contentPane.add(txtHelbidea);
-		txtHelbidea.setColumns(10);
-		
-		txtTelefonoa = new JTextField();
-		txtTelefonoa.setText("Telefonoa");
-		txtTelefonoa.setBounds(0, 173, 125, 20);
-		contentPane.add(txtTelefonoa);
-		txtTelefonoa.setColumns(10);
-		
-		txtKorreoa = new JTextField();
-		txtKorreoa.setText("Korreoa");
-		txtKorreoa.setBounds(0, 220, 125, 20);
-		contentPane.add(txtKorreoa);
-		txtKorreoa.setColumns(10);
-		
-		txtId = new JTextField();
-		txtId.setText("Id");
-		txtId.setBounds(0, 150, 125, 20);
-		contentPane.add(txtId);
-		txtId.setColumns(10);
-		
-		
-		
-		txtName = new JTextField();
-		txtName.setText("Izena");
-		txtName.setBounds(3, 344, 86, 20);
-		contentPane.add(txtName);
-		txtName.setColumns(10);
-		
-		txtId2 = new JTextField();
-		txtId2.setText("Id");
-		txtId2.setBounds(3, 370, 86, 20);
-		contentPane.add(txtId2);
-		txtId2.setColumns(10);
-		
-		txtNanNif = new JTextField();
-		txtNanNif.setText("NAN/NIF");
-		txtNanNif.setBounds(0, 264, 125, 19);
-		contentPane.add(txtNanNif);
-		txtNanNif.setColumns(10);
-		
-		txtTestua = new JTextField();
-		txtTestua.setText("Testua");
-		txtTestua.setBounds(0, 285, 125, 19);
-		contentPane.add(txtTestua);
-		txtTestua.setColumns(10);
 	}
 }
+

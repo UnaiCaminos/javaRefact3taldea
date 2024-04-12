@@ -1,6 +1,5 @@
 package erronka;
 
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -22,7 +21,7 @@ import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
 import java.awt.EventQueue;
 
-public class langileak extends JFrame {
+public class langileak extends pertsona {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -212,7 +211,7 @@ public class langileak extends JFrame {
 				    BankuZenb=txtBankuZenb.getText();
 				    lan_postua=txtLana.getText();
 				    salarioa=txtSalarioa.getText();
-				    String query ="INSERT INTO erronka.langileak"
+				    String query ="INSERT INTO erronkadb.langileak"
 						+ " Values('"+Nan+"', '"+izena+"', '"+abz1+"', '"+abz2+"', '"+tel+"', '"+BankuZenb+"', '"+lan_postua+"', '"+salarioa+"')";
 				    Statement stmt;
 					stmt = conexion.createStatement();
@@ -237,7 +236,7 @@ public class langileak extends JFrame {
 				    String langilea, abizena;
 				    langilea=txtName.getText();
 				    abizena=textAbizena2.getText();
-				    String query ="DELETE FROM erronka.langileak WHERE izena= '"+langilea+"'&& abizena1= '"+abizena+"'";
+				    String query ="DELETE FROM erronkadb.langileak WHERE izena= '"+langilea+"'&& abizena1= '"+abizena+"'";
 				    Statement st;
 					st = conexion.createStatement();
 					st.executeUpdate(query);

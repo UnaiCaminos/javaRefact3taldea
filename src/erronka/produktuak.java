@@ -129,7 +129,7 @@ public class produktuak extends JFrame {
 				    prezioa=txtPrezioa.getText();
 				    marka=txtMarka.getText();
 				    balorazioa=txtBalorazioa.getText();
-				    String query ="INSERT INTO erronka.produktuak"
+				    String query ="INSERT INTO erronkadb.produktuak"
 						+ " Values("+id+", '"+mota+"', '"+img+"', '"+modeloa+"', '"+deskribapena+"', "+kantitatea+", '"+berria+"', "+prezioa+",'"+marka+"','"+balorazioa+"')";
 				    Statement stmt;
 				
@@ -231,7 +231,7 @@ public class produktuak extends JFrame {
 				    Connection conexion = kon.getConnection();
 				    String id;
 				    id=textId2.getText();
-				    String query ="DELETE FROM erronka.produktuak WHERE id= "+id;
+				    String query ="DELETE FROM erronkadb.produktuak WHERE id= "+id;
 				    Statement st;
 					st = conexion.createStatement();
 					st.executeUpdate(query);
