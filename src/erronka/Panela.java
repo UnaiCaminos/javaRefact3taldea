@@ -29,8 +29,8 @@ public class Panela extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnBezeroa = new JButton("Langilea");
-		btnBezeroa.addActionListener(new ActionListener() {
+		JButton btnPertsona = new JButton("Langilea");
+		btnPertsona.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				    String postua = "Jatetxeko superbisatzailea";
 			        String kontsulta ="SELECT * FROM erronkadb.langilea WHERE izena='"+user+"'";
@@ -56,8 +56,8 @@ public class Panela extends JFrame {
 					
 					}
         });
-		btnBezeroa.setBounds(0, 0, 264, 191);
-		contentPane.add(btnBezeroa);
+		btnPertsona.setBounds(0, 0, 264, 191);
+		contentPane.add(btnPertsona);
 		
 		btnProduktua = new JButton("Produktua");
 		btnProduktua.addActionListener(new ActionListener() {
