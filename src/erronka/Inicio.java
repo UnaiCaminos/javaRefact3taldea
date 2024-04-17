@@ -58,7 +58,7 @@ public class Inicio extends JFrame {
 			        user=textUser.getText();
 			        pwd= textPwd.getText();
 			        String kontsulta ="SELECT * FROM erronkadb.langilea WHERE izena='"+user+"'";
-			        konexioaLocal kon=new konexioaLocal();
+			        konexioa kon=new konexioa();
 					Connection conexion = kon.getConnection();
 					Statement st;
 					ResultSet rs;

@@ -22,7 +22,7 @@ public class Panela extends JFrame {
 
 	public Panela(String user) {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 538, 442);
+		setBounds(100, 100, 825, 444);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
@@ -30,12 +30,12 @@ public class Panela extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnPertsona = new JButton("Langilea");
+		JButton btnPertsona = new JButton("Pertsonak");
 		btnPertsona.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				    String postua = "Jatetxeko superbisatzailea";
 			        String kontsulta ="SELECT * FROM erronkadb.langilea WHERE izena='"+user+"'";
-			        konexioaLocal kon=new konexioaLocal();
+			        konexioa kon=new konexioa();
 					Connection conexion = kon.getConnection();
 					Statement st;
 					ResultSet rs;
@@ -45,7 +45,7 @@ public class Panela extends JFrame {
 						while(rs.next()) {
 							if(postua.equals(rs.getString(8))) {
 								System.out.println("ONDO DA!");
-								langileak frame = new langileak();
+								pertsona frame = new pertsona();
 								frame.setVisible(true);
 							}else System.out.println("PASAHITZ OKERRA");
 						}
@@ -64,8 +64,8 @@ public class Panela extends JFrame {
 		btnProduktua.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String admin = "1";
-		        String kontsulta ="SELECT * FROM erronkadb.langilea WHERE izena='"+user+"'";
-		        konexioaLocal kon=new konexioaLocal();
+		        String kontsulta ="SELECT * FROM erronkadb.produktuak WHERE izena='"+user+"'";
+		        konexioa kon=new konexioa();
 				Connection conexion = kon.getConnection();
 				Statement st;
 				ResultSet rs;
@@ -75,7 +75,7 @@ public class Panela extends JFrame {
 					while(rs.next()) {
 						if(admin.equals(rs.getString(10))) {
 							System.out.println("ONDO DA!");
-							langileak frame = new langileak();
+							produktuak frame = new produktuak();
 							frame.setVisible(true);
 						}else System.out.println("PASAHITZ OKERRA");
 					}
@@ -90,12 +90,12 @@ public class Panela extends JFrame {
 		btnProduktua.setBounds(0, 191, 264, 214);
 		contentPane.add(btnProduktua);
 		
-		JButton btnHornitzailea = new JButton("Hornitzailea");
-		btnHornitzailea.addActionListener(new ActionListener() {
+		JButton btnHornitza = new JButton("Faktura");
+		btnHornitza.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String postua = "Gerentea";
 		        String kontsulta ="SELECT * FROM erronkadb.langilea WHERE izena='"+user+"'";
-		        konexioaLocal kon=new konexioaLocal();
+		        konexioa kon=new konexioa();
 				Connection conexion = kon.getConnection();
 				Statement st;
 				ResultSet rs;
@@ -105,7 +105,7 @@ public class Panela extends JFrame {
 					while(rs.next()) {
 						if(postua.equals(rs.getString(8))) {
 							System.out.println("ONDO DA!");
-							langileak frame = new langileak();
+							faktura frame = new faktura();
 							frame.setVisible(true);
 						}else System.out.println("PASAHITZ OKERRA");
 					}
@@ -116,15 +116,15 @@ public class Panela extends JFrame {
 				}	
 			}
 		});
-		btnHornitzailea.setBounds(265, 0, 259, 191);
-		contentPane.add(btnHornitzailea);
+		btnHornitza.setBounds(265, 0, 259, 191);
+		contentPane.add(btnHornitza);
 		
-		btnErreserba = new JButton("Erreserba");
+		btnErreserba = new JButton("Eskaria");
 		btnErreserba.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String postua = "Anfitrioia";
+				String postua = "Kamareroa";
 		        String kontsulta ="SELECT * FROM erronkadb.langilea WHERE izena='"+user+"'";
-		        konexioaLocal kon=new konexioaLocal();
+		        konexioa kon=new konexioa();
 				Connection conexion = kon.getConnection();
 				Statement st;
 				ResultSet rs;
@@ -134,7 +134,7 @@ public class Panela extends JFrame {
 					while(rs.next()) {
 						if(postua.equals(rs.getString(8))) {
 							System.out.println("ONDO DA!");
-							langileak frame = new langileak();
+							eskaria frame = new eskaria();
 							frame.setVisible(true);
 						}else System.out.println("PASAHITZ OKERRA");
 					}
@@ -145,8 +145,16 @@ public class Panela extends JFrame {
 				}	
 			}
 		});
-		btnErreserba.setBounds(265, 191, 264, 214);
+		btnErreserba.setBounds(265, 191, 259, 214);
 		contentPane.add(btnErreserba);
+		
+		JButton btnEskaria = new JButton("Eskaria");
+		btnEskaria.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnEskaria.setBounds(529, 0, 272, 405);
+		contentPane.add(btnEskaria);
 		
 		
 	}

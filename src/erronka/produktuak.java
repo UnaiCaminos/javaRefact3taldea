@@ -62,7 +62,7 @@ public class produktuak extends JFrame {
 		JButton btnNewButton = new JButton("Taula");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				konexioaLocal kon=new konexioaLocal();
+				konexioa kon=new konexioa();
 				Connection conexion = kon.getConnection();
 				String sql = "SELECT * FROM produktuak";
 				Statement st;
@@ -116,7 +116,7 @@ public class produktuak extends JFrame {
 		btnGehitu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-				    konexioaLocal kon=new konexioaLocal();
+				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
 				    String id, mota, modeloa, img, deskribapena, kantitatea, prezioa, berria, marka, balorazioa;
 				    mota=txtmota.getText();
@@ -148,7 +148,7 @@ public class produktuak extends JFrame {
 		btnIdinfo = new JButton("Id_info");
 		btnIdinfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				konexioaLocal kon=new konexioaLocal();
+				konexioa kon=new konexioa();
 				Connection conexion = kon.getConnection();
 				String Id;
 				Id=textId2.getText();
@@ -200,7 +200,7 @@ public class produktuak extends JFrame {
 		btnAktualizatu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-				    konexioaLocal kon=new konexioaLocal();
+				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
 				    String mod1, mod2, mod3, mod4, izn, marka;
 				    izn=txtIzena.getText();
@@ -227,7 +227,7 @@ public class produktuak extends JFrame {
 		btnKendu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-				    konexioaLocal kon=new konexioaLocal();
+				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
 				    String id;
 				    id=textId2.getText();

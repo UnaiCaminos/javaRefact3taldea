@@ -40,7 +40,7 @@ public class Hornitzaileak extends pertsona {
 	
 				String like;
 				like=txtLetra.getText();
-				konexioaLocal kon=new konexioaLocal();
+				konexioa kon=new konexioa();
 				Connection conexion = kon.getConnection();
 				String sql = "SELECT * FROM hornitzaileak WHERE EnpresarenIzena like'"+like+"%'";
 				Statement st;
@@ -78,7 +78,7 @@ public class Hornitzaileak extends pertsona {
 	}
 		
 			public void hornitzaileTaulaIkusi() {
-				konexioaLocal kon=new konexioaLocal();
+				konexioa kon=new konexioa();
 				Connection conexion = kon.getConnection();
 				String sql = "SELECT * FROM hornitzaileak";
 				Statement st;
@@ -121,7 +121,7 @@ public class Hornitzaileak extends pertsona {
 		
 			public void hornitzaileaGehitu() {
 				try {
-				    konexioaLocal kon=new konexioaLocal();
+				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
 				    String izn,tel,helbidea,Id,korreoa,nan,testua;
 				    izn=txtIzena.getText();
@@ -146,7 +146,7 @@ public class Hornitzaileak extends pertsona {
 	
 			public void hornitzaileaKendu(){
 				try {
-				    konexioaLocal kon=new konexioaLocal();
+				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
 				    String izena, Id2;
 				    izena=txtName.getText();

@@ -56,7 +56,7 @@ public class langileak extends pertsona {
 		btnHornitzailea.setBounds(4, 510, 158, 23);
 		btnHornitzailea.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				konexioaLocal kon=new konexioaLocal();
+				konexioa kon=new konexioa();
 				Connection conexion = kon.getConnection();
 				String sql = "SELECT * FROM hornitzaileak";
 				Statement st;
@@ -106,7 +106,7 @@ public class langileak extends pertsona {
 		btnLangileak.setBounds(4, 0, 148, 23);
 		btnLangileak.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				konexioaLocal kon=new konexioaLocal();
+				konexioa kon=new konexioa();
 				Connection conexion = kon.getConnection();
 				String sql = "SELECT * FROM Langileak";
 				Statement st;
@@ -156,7 +156,7 @@ public class langileak extends pertsona {
 		btnbiltegia.setBounds(4, 485, 158, 23);
 		btnbiltegia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				konexioaLocal kon=new konexioaLocal();
+				konexioa kon=new konexioa();
 				Connection conexion = kon.getConnection();
 				String sql = "SELECT * FROM produktuak";
 				Statement st;
@@ -200,7 +200,7 @@ public class langileak extends pertsona {
 		btnGehitu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-				    konexioaLocal kon=new konexioaLocal();
+				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
 				    String izena,abz1,abz2,Nan,tel,BankuZenb,lan_postua,salarioa;
 				    izena=txtIzena1.getText();
@@ -231,7 +231,7 @@ public class langileak extends pertsona {
 		btnKendu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-				    konexioaLocal kon=new konexioaLocal();
+				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
 				    String langilea, abizena;
 				    langilea=txtName.getText();
@@ -254,7 +254,7 @@ public class langileak extends pertsona {
 		btnAktualizatu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-				    konexioaLocal kon=new konexioaLocal();
+				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
 				    String mod1, mod2, mod3, mod4, izn, abz;
 				    izn=textIzena1.getText();

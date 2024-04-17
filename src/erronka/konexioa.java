@@ -7,15 +7,15 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-public class konexioaLocal {
+public class konexioa {
 	private static String usuario="root";
 	private static String contraseña="1WMG2023";
-    private static String url = "jdbc:mysql://localhost:3306/erronkadb";
+    private static String url = "jdbc:mysql://localhost:3306/erronkadb";   //jdbc:mysql://192.168.15.82:3306/erronkadb
     private static String BBDD = "com.mysql.cj.jdbc.Driver";
 	
 	static {
 		try {
-			Class.forName(konexioaLocal.BBDD);
+			Class.forName(konexioa.BBDD);
 		}catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Driver no Conectado");
