@@ -49,7 +49,7 @@ public class Inicio extends JFrame {
 		
 		JButton btnNewButton = new JButton("Sesioa hasi");
 		
-		btnNewButton.setBounds(117, 127, 188, 23);
+		btnNewButton.setBounds(117, 130, 188, 23);
 		contentPane.add(btnNewButton);
 		
 		btnNewButton.addActionListener(new ActionListener() {
@@ -66,7 +66,7 @@ public class Inicio extends JFrame {
 						st=conexion.createStatement();
 						rs=st.executeQuery(kontsulta);
 						while(rs.next()) {
-							if(pwd.equals(rs.getString(2))) {
+							if(pwd.equals(rs.getString(2))){
 								System.out.println("ONDO DA!");
 								Panela frame = new Panela(user);
 								frame.setVisible(true);

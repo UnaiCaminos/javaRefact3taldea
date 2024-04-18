@@ -66,7 +66,7 @@ public class faktura extends JFrame {
 
 		        try {
 		            
-		            String url = "jdbc:mysql://localhost:3306/erronkadb";   //jdbc:mysql://192.168.15.82:3306/erronkadb
+		            String url = "jdbc:mysql://192.168.15.82:3306/erronkadb";   //jdbc:mysql://localhost:3306/erronkadb
 		            String usuario = "root";
 		            String contraseña = "1WMG2023";
 		            connection = DriverManager.getConnection(url, usuario, contraseña);
