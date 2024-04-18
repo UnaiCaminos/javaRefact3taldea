@@ -15,7 +15,7 @@ public class konexioa {
 	
 	static {
 		try {
-			Class.forName(konexioa.BBDD);
+			Class.forName(BBDD);
 		}catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Driver no Conectado");
