@@ -39,19 +39,20 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+import java.text.DecimalFormat;
+
 public class faktura extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
-	private JButton btnAktualizatu;
-	private JTextField txtId;
 	private JTextField txtId0;
 	private JButton btnPdf;
 	private JTextField txtIzena;
+	private JTextField txtIdEskaria;
 
 	public faktura() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 951, 671);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -67,16 +68,17 @@ public class faktura extends JFrame {
 		        try {
 		            
 		            String url = "jdbc:mysql://192.168.15.82:3306/erronkadb";   //jdbc:mysql://localhost:3306/erronkadb
-		            String usuario = "root";
+		            String usuario = "3taldea";
 		            String contraseña = "1WMG2023";
 		            connection = DriverManager.getConnection(url, usuario, contraseña);
                     String Id;
                     Id=txtId0.getText();
-		            String query = "SELECT izena, prezioa, NAN, izena, abizena1, abizena2"
-		            		+ " FROM eskaera "
-		            		+ " JOIN bezeroa ON eskaera.bezeroa_idBezeroa = bezeroa.idBezeroa "
-		            		+ " JOIN platerak ON eskaera.platerak_idplaterak = platerak.idPlaterak "
-		            		+ " WHERE eskaera.idEskaera ="+Id;
+		            String query = "SELECT izena, prezioa, kopurua, NAN, platera, abizena, abizena2"
+		            		+ " FROM eskatutakoPlaterak "
+		            		+ " JOIN bezeroa ON eskatutakoplaterak.bezeroa_idBezeroa = bezeroa.idBezeroa "
+		            		+ " JOIN platerak ON eskatutakoplaterak.platerak_idplaterak = platerak.idPlaterak "
+		            		+ " JOIN eskaera ON eskatutakoplaterak.ideskatutakoPlaterak = eskaera.eskatutakoplaterak_ideskatutakoPlaterak "
+		            		+ " WHERE eskaera.ideskaera ="+Id;
 		            PreparedStatement preparedStatement = connection.prepareStatement(query);
 		            ResultSet resultSet = preparedStatement.executeQuery();
 		            
@@ -106,7 +108,7 @@ public class faktura extends JFrame {
 		            float y = 725;
 		            
 		            try {
-		              com.itextpdf.text.Image logo = com.itextpdf.text.Image.getInstance("..//javaRefact3taldea//logoa//logo.png"); //Logoa dagoen ruta
+		              com.itextpdf.text.Image logo = com.itextpdf.text.Image.getInstance("..//javaRefact3taldea//logoa//logoa3ebal.jpg"); //Logoa dagoen ruta
 		              logo.scaleToFit(200, 100); // Logoaren tamainua
 		              logo.setAbsolutePosition(x, y); // Logoaren posizioa 
 		              document.add(logo);
@@ -129,9 +131,9 @@ public class faktura extends JFrame {
 		            double sumatotal = 0;
 		            String nan = "";
 		            String izena= "";
-		            String abizena1= "";
+		            String abizena= "";
 		            String abizena2= "";
-                    String izena2= "";
+                    String platera= "";
 		            String prezioa= "";
 		        
 		            int n = 0;
@@ -139,25 +141,22 @@ public class faktura extends JFrame {
 		            while (resultSet.next()) {
 		            	nan = resultSet.getString("NAN");
 	                    izena = resultSet.getString("izena");
-	                    abizena1 = resultSet.getString("abizena1");
+	                    abizena = resultSet.getString("abizena");
 	                    abizena2 = resultSet.getString("abizena2");
-	                    izena2 = resultSet.getString("izena");
+	                    platera = resultSet.getString("platera");
 	                    prezioa = resultSet.getString("prezioa");
 		                
 	                    while(n==0) {
 	                    document.add(new Paragraph("Nan: " + nan));
 	                    document.add(new Paragraph("Izena: " + izena));
-	                    document.add(new Paragraph("Lehen abizena: " + abizena1));
+	                    document.add(new Paragraph("Lehen abizena: " + abizena));
 	                    document.add(new Paragraph("Bigarren abizena: " + abizena2));
 	                    
 	                    document.add(new Paragraph("\n"));
 	                    n = n+1;
 	                    }
 	                    
-		                String produktukoPrezioa = resultSet.getString("produktukoPrezioa");
-		                String konponenteMota = resultSet.getString("konponenteMota");
-		                String modelo = resultSet.getString("modelo");
-		                String marka = resultSet.getString("marka");
+		               ;
 		                String kopurua = resultSet.getString("kopurua");
 		                double num = Double.parseDouble(prezioa);
 		                double kop = Double.parseDouble(kopurua);
@@ -165,13 +164,18 @@ public class faktura extends JFrame {
 	                    suma = (num*kop) + suma;
 	                    sumatotal =suma + sumatotal;
 		                
-		                document.add(new Paragraph(izena2+": " + produktukoPrezioa+"€"));
+		                document.add(new Paragraph(platera+": "+prezioa+"€"));
+		                document.add(new Paragraph("Kopurua: "+kopurua));
 		                
 		                document.add(new Paragraph("\n"));
 		            }
-		            
+		            // Formatua definitu
+		            DecimalFormat formato = new DecimalFormat("0.00");
+
+		            // Zenbakia formateatu
+		            String formateatuta3 = formato.format(sumatotal);
 		           
-		            document.add(new Paragraph("Prezio totala: " + sumatotal+"€"));
+		            document.add(new Paragraph("Prezio totala: " + formateatuta3+"€"));
 		            
 		            document.add(new Paragraph("\n"));
 	                
@@ -192,25 +196,26 @@ public class faktura extends JFrame {
 		btnPdf.setBounds(0, 26, 112, 23);
 		contentPane.add(btnPdf);
 		
-		JButton btnTaula = new JButton("Taula");
-		btnTaula.addActionListener(new ActionListener() {
+		JButton btnId_info = new JButton("Id-info");
+		btnId_info.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				konexioa kon=new konexioa();
 				Connection conexion = kon.getConnection();
-				String sql = "SELECT * FROM erronkadb.platerak";
+				String Id;
+				Id=txtIdEskaria.getText();
+				String sql = "SELECT ideskaera FROM eskaera WHERE Id='"+Id+"'";
 				Statement st;
 				ResultSet rs;
 				
 				DefaultTableModel model =new DefaultTableModel();
 				
-				model.addColumn("id_eskaera");
-				model.addColumn("nan_bezeroa");
-				model.addColumn("Segimentua_eus");
-				model.addColumn("prezioTotala");
-				model.addColumn("Segimentua_es");
-				model.addColumn("Segimentua_en");
+				model.addColumn("1");
+				model.addColumn("2");
+				model.addColumn("3");
+				model.addColumn("4");
+				model.addColumn("5");
 				table.setModel(model);
-				String[] array = new String[6];
+				String[] array = new String[5];
 				try {
 					st=conexion.createStatement();
 					rs = st.executeQuery(sql);
@@ -221,52 +226,23 @@ public class faktura extends JFrame {
 						array[2]=rs.getString(3);
 						array[3]=rs.getString(4);
 						array[4]=rs.getString(5);
-						array[5]=rs.getString(6);
 						model.addRow(array);
 						
 					}
 					
 					
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
+					showMessageDialog(null, "Id okerra");
 					e1.printStackTrace();
 				}
 			}
 		});
-		btnTaula.setBounds(0, 131, 112, 23);
-		contentPane.add(btnTaula);
+		btnId_info.setBounds(0, 119, 112, 23);
+		contentPane.add(btnId_info);
 		
 		table = new JTable();
 		table.setBounds(135, 10, 815, 508);
 		contentPane.add(table);
-		
-		btnAktualizatu = new JButton("Aktualizatu");
-		btnAktualizatu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-				    konexioa kon=new konexioa();
-				    Connection conexion = kon.getConnection();
-				    String id;
-				    id=txtId.getText();
-				    String query ="UPDATE erronka2.saskia SET segimentua_eus = 'BIDALIA', segimentua_es = 'ENVIADO', segimentua_en = 'SENT' WHERE id_eskaera ="+id;
-				    Statement st;
-					st = conexion.createStatement();
-					st .executeUpdate(query);
-					showMessageDialog(null, "Datuak ondo aldatu dira");
-				} catch (SQLException e1) {
-					showMessageDialog(null, "Arazoa aktualizatzean.");
-					e1.printStackTrace();
-				}
-			}
-		});
-		btnAktualizatu.setBounds(0, 164, 112, 23);
-		contentPane.add(btnAktualizatu);
-		
-		txtId = new JTextField();
-		txtId.setText("Eskariaren id");
-		txtId.setColumns(10);
-		txtId.setBounds(0, 196, 125, 20);
-		contentPane.add(txtId);
 		
 		txtId0 = new JTextField();
 		txtId0.setText("Eskariaren id-a");
@@ -280,6 +256,14 @@ public class faktura extends JFrame {
 		txtIzena.setColumns(10);
 		txtIzena.setBounds(0, 89, 125, 20);
 		contentPane.add(txtIzena);
+		
+		
+		
+		txtIdEskaria = new JTextField();
+		txtIdEskaria.setText("Eskariaren id-a");
+		txtIdEskaria.setColumns(10);
+		txtIdEskaria.setBounds(0, 152, 125, 20);
+		contentPane.add(txtIdEskaria);
 		
 
 	}

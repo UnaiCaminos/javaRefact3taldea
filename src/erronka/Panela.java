@@ -48,7 +48,7 @@ public class Panela extends JFrame {
 		btnProduktua.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String admin = "1";
-		        String kontsulta ="SELECT * FROM erronkadb.produktuak WHERE izena='"+user+"'";
+		        String kontsulta ="SELECT * FROM erronkadb.langilea WHERE izena='"+user+"'";
 		        konexioa kon=new konexioa();
 				Connection conexion = kon.getConnection();
 				Statement st;

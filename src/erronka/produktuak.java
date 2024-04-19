@@ -26,14 +26,11 @@ public class produktuak extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
-	private JTextField txtmota;
-	private JTextField txtImg1;
-	private JTextField txtModeloa;
-	private JTextField txtDeskripzioa;
-	private JTextField txtKantitatea;
-	private JTextField txtBerria;
-	private JTextField txtId;
+	private JTextField txtProduktua;
 	private JTextField txtPrezioa;
+	private JTextField txtKantitatea;
+	private JTextField txtIdHornitzailea;
+	private JTextField txtId;
 	private JButton btnIdinfo;
 	private JTextField textId2;
 	private JTextField txtMod1;
@@ -41,9 +38,7 @@ public class produktuak extends JFrame {
 	private JTextField txtMod3;
 	private JTextField txtMod4;
 	private JTextField txtIzena;
-	private JTextField txtAbizena;
-	private JTextField txtMarka;
-	private JTextField txtBalorazioa;
+	private JTextField txtProdId;
 	private JTextField txtId_1;
 
 	public produktuak() {
@@ -75,14 +70,9 @@ public class produktuak extends JFrame {
 				model.addColumn("3");
 				model.addColumn("4");
 				model.addColumn("5");
-				model.addColumn("6");
-				model.addColumn("7");
-				model.addColumn("8");
-				model.addColumn("9");
-				model.addColumn("10");
 				
 				table.setModel(model);
-				String[] array = new String[10];
+				String[] array = new String[5];
 				try {
 					st=conexion.createStatement();
 					rs = st.executeQuery(sql);
@@ -93,11 +83,6 @@ public class produktuak extends JFrame {
 						array[2]=rs.getString(3);
 						array[3]=rs.getString(4);
 						array[4]=rs.getString(5);
-						array[5]=rs.getString(6);
-						array[6]=rs.getString(7);
-						array[7]=rs.getString(8);
-						array[8]=rs.getString(9);
-						array[9]=rs.getString(10);
 						model.addRow(array);
 						
 					}
@@ -118,24 +103,21 @@ public class produktuak extends JFrame {
 				try {
 				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
-				    String id, mota, modeloa, img, deskribapena, kantitatea, prezioa, berria, marka, balorazioa;
-				    mota=txtmota.getText();
-				    img=txtImg1.getText();
-				    modeloa=txtModeloa.getText();
-				    deskribapena=txtDeskripzioa.getText();
-				    berria=txtBerria.getText();
-				    kantitatea=txtKantitatea.getText();
-				    id=txtId.getText();
+				    String idProd, prod, prezioa, kantitatea, idHornitzailea;
+				    idProd=txtId.getText();
+				    prod=txtProduktua.getText();
 				    prezioa=txtPrezioa.getText();
-				    marka=txtMarka.getText();
-				    balorazioa=txtBalorazioa.getText();
+				    kantitatea=txtKantitatea.getText();
+				    idHornitzailea=txtIdHornitzailea.getText();
+				    
 				    String query ="INSERT INTO erronkadb.produktuak"
-						+ " Values("+id+", '"+mota+"', '"+img+"', '"+modeloa+"', '"+deskribapena+"', "+kantitatea+", '"+berria+"', "+prezioa+",'"+marka+"','"+balorazioa+"')";
+						  + " Values("+idProd+", '"+prod+"', "+prezioa+", "+kantitatea+", "+idHornitzailea+")";
 				    Statement stmt;
 				
-					stmt = conexion.createStatement();
-					stmt .executeUpdate(query);
+				    stmt = conexion.createStatement();
+				    stmt .executeUpdate(query);
 					showMessageDialog(null, "Produktua ongi gehitu da datu basean");
+				    
 				} catch (SQLException e1) {
 					showMessageDialog(null, "Arazoak datuak taulan gehitzerakoan");
 					e1.printStackTrace();
@@ -163,13 +145,8 @@ public class produktuak extends JFrame {
 				model.addColumn("3");
 				model.addColumn("4");
 				model.addColumn("5");
-				model.addColumn("6");
-				model.addColumn("7");
-				model.addColumn("8");
-				model.addColumn("9");
-				model.addColumn("10");
 				table.setModel(model);
-				String[] array = new String[10];
+				String[] array = new String[5];
 				try {
 					st=conexion.createStatement();
 					rs = st.executeQuery(sql);
@@ -180,11 +157,6 @@ public class produktuak extends JFrame {
 						array[2]=rs.getString(3);
 						array[3]=rs.getString(4);
 						array[4]=rs.getString(5);
-						array[5]=rs.getString(6);
-						array[6]=rs.getString(7);
-						array[7]=rs.getString(8);
-						array[8]=rs.getString(9);
-						array[9]=rs.getString(10);
 						model.addRow(array);
 						
 					}
@@ -202,14 +174,14 @@ public class produktuak extends JFrame {
 				try {
 				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
-				    String mod1, mod2, mod3, mod4, izn, marka;
-				    izn=txtIzena.getText();
-				    marka=txtAbizena.getText();
+				    String mod1, mod2, mod3, mod4, izn, id;
 				    mod1=txtMod1.getText();
 				    mod2=txtMod2.getText();
 				    mod3=txtMod3.getText();
 				    mod4=txtMod4.getText();
-				    String query ="UPDATE produktuak SET "+mod1+" ='"+mod2+"', "+mod3+" ='"+mod4+"' WHERE konponenteMota= '"+izn+"'&& Marka='"+marka+"'";
+				    id=txtProdId.getText();
+				    izn=txtIzena.getText();
+				    String query ="UPDATE produktuak SET "+mod1+" ='"+mod2+"', "+mod3+" ='"+mod4+"' WHERE izena= '"+izn+"'&& id_Produktuak="+id;
 				    Statement st;
 					st = conexion.createStatement();
 					st .executeUpdate(query);
@@ -220,7 +192,7 @@ public class produktuak extends JFrame {
 				}
 			}
 		});
-		btnAktualizatu.setBounds(10, 328, 115, 23);
+		btnAktualizatu.setBounds(10, 210, 115, 23);
 		contentPane.add(btnAktualizatu);
 		
 		JButton btnKendu = new JButton("Kendu");
@@ -230,7 +202,7 @@ public class produktuak extends JFrame {
 				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
 				    String id;
-				    id=textId2.getText();
+				    id=txtId_1.getText();
 				    String query ="DELETE FROM erronkadb.produktuak WHERE id= "+id;
 				    Statement st;
 					st = conexion.createStatement();
@@ -242,47 +214,35 @@ public class produktuak extends JFrame {
 				}
 			}
 		});
-		btnKendu.setBounds(10, 488, 115, 23);
+		btnKendu.setBounds(10, 367, 115, 23);
 		contentPane.add(btnKendu);
 		
-		btnIdinfo.setBounds(10, 279, 89, 23);
+		btnIdinfo.setBounds(10, 165, 89, 23);
 		contentPane.add(btnIdinfo);
 		
-		txtmota = new JTextField();
-		txtmota.setText("Produktua");
-		txtmota.setBounds(13, 76, 112, 20);
-		contentPane.add(txtmota);
-		txtmota.setColumns(10);
+		txtProduktua = new JTextField();
+		txtProduktua.setText("Produktua");
+		txtProduktua.setBounds(13, 76, 112, 20);
+		contentPane.add(txtProduktua);
+		txtProduktua.setColumns(10);
 		
-		txtImg1 = new JTextField();
-		txtImg1.setText("Argazkia(linka)");
-		txtImg1.setBounds(13, 100, 112, 20);
-		contentPane.add(txtImg1);
-		txtImg1.setColumns(10);
-		
-		txtModeloa = new JTextField();
-		txtModeloa.setText("Modeloa");
-		txtModeloa.setBounds(13, 122, 112, 20);
-		contentPane.add(txtModeloa);
-		txtModeloa.setColumns(10);
-		
-		txtDeskripzioa = new JTextField();
-		txtDeskripzioa.setText("Deskripzioa");
-		txtDeskripzioa.setBounds(13, 143, 112, 20);
-		contentPane.add(txtDeskripzioa);
-		txtDeskripzioa.setColumns(10);
+		txtPrezioa = new JTextField();
+		txtPrezioa.setText("Prezioa");
+		txtPrezioa.setBounds(13, 100, 112, 20);
+		contentPane.add(txtPrezioa);
+		txtPrezioa.setColumns(10);
 		
 		txtKantitatea = new JTextField();
 		txtKantitatea.setText("Kantitatea");
-		txtKantitatea.setBounds(13, 166, 112, 20);
+		txtKantitatea.setBounds(13, 122, 112, 20);
 		contentPane.add(txtKantitatea);
 		txtKantitatea.setColumns(10);
 		
-		txtBerria = new JTextField();
-		txtBerria.setText("Berria");
-		txtBerria.setBounds(13, 188, 112, 20);
-		contentPane.add(txtBerria);
-		txtBerria.setColumns(10);
+		txtIdHornitzailea = new JTextField();
+		txtIdHornitzailea.setText("Hornitzailearen id");
+		txtIdHornitzailea.setBounds(13, 143, 112, 20);
+		contentPane.add(txtIdHornitzailea);
+		txtIdHornitzailea.setColumns(10);
 		
 		txtId = new JTextField();
 		txtId.setText("Id");
@@ -290,70 +250,53 @@ public class produktuak extends JFrame {
 		contentPane.add(txtId);
 		txtId.setColumns(10);
 		
-		txtPrezioa = new JTextField();
-		txtPrezioa.setText("Prezioa");
-		txtPrezioa.setBounds(13, 210, 112, 20);
-		contentPane.add(txtPrezioa);
-		txtPrezioa.setColumns(10);
-		
 		textId2 = new JTextField();
 		textId2.setText("Id");
-		textId2.setBounds(13, 305, 86, 20);
+		textId2.setBounds(13, 189, 86, 20);
 		contentPane.add(textId2);
 		textId2.setColumns(10);
 		
 		txtMod1 = new JTextField();
 		txtMod1.setText("Aldatu nahi dena");
-		txtMod1.setBounds(13, 401, 115, 20);
+		txtMod1.setBounds(10, 279, 115, 20);
 		contentPane.add(txtMod1);
 		txtMod1.setColumns(10);
 		
 		txtMod2 = new JTextField();
 		txtMod2.setText("Aldaketa");
-		txtMod2.setBounds(13, 422, 86, 20);
+		txtMod2.setBounds(13, 302, 86, 20);
 		contentPane.add(txtMod2);
 		txtMod2.setColumns(10);
 		
 		txtMod3 = new JTextField();
 		txtMod3.setText("Aldatu nahi dena");
-		txtMod3.setBounds(13, 442, 115, 20);
+		txtMod3.setBounds(12, 323, 115, 20);
 		contentPane.add(txtMod3);
 		txtMod3.setColumns(10);
 		
 		txtMod4 = new JTextField();
 		txtMod4.setText("Aldaketa");
-		txtMod4.setBounds(13, 463, 86, 20);
+		txtMod4.setBounds(10, 345, 86, 20);
 		contentPane.add(txtMod4);
 		txtMod4.setColumns(10);
 		
 		txtIzena = new JTextField();
 		txtIzena.setText("Izena");
-		txtIzena.setBounds(13, 355, 86, 20);
+		txtIzena.setBounds(13, 235, 86, 20);
 		contentPane.add(txtIzena);
 		txtIzena.setColumns(10);
 		
-		txtAbizena = new JTextField();
-		txtAbizena.setText("Marka");
-		txtAbizena.setBounds(13, 377, 86, 20);
-		contentPane.add(txtAbizena);
-		txtAbizena.setColumns(10);
-		
-		txtMarka = new JTextField();
-		txtMarka.setText("Marka");
-		txtMarka.setBounds(13, 235, 112, 19);
-		contentPane.add(txtMarka);
-		txtMarka.setColumns(10);
-		
-		txtBalorazioa = new JTextField();
-		txtBalorazioa.setText("Balorazioa(1-10)");
-		txtBalorazioa.setBounds(13, 258, 114, 19);
-		contentPane.add(txtBalorazioa);
-		txtBalorazioa.setColumns(10);
+		txtProdId = new JTextField();
+		txtProdId.setText("Id produktua");
+		txtProdId.setBounds(13, 258, 86, 20);
+		contentPane.add(txtProdId);
+		txtProdId.setColumns(10);
 		
 		txtId_1 = new JTextField();
 		txtId_1.setText("id");
 		txtId_1.setColumns(10);
-		txtId_1.setBounds(13, 514, 86, 20);
+		txtId_1.setBounds(13, 390, 86, 20);
 		contentPane.add(txtId_1);
 	}
 }
+
