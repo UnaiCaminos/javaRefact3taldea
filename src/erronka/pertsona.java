@@ -30,6 +30,7 @@ public class pertsona extends JFrame{
 	private JButton btnGehitu;
 	private JButton btnBilatu;
 	private JButton btnNewButton;
+	private JTextField txtLetra;
 
 	public pertsona() {
 	
@@ -70,6 +71,11 @@ public class pertsona extends JFrame{
 		});
 		contentPane.setLayout(null);
 		contentPane.add(btnHornitzailea);
+		
+		txtLetra = new JTextField();
+		txtLetra.setText("Sartu izenaren lehenengo letrak");
+		txtLetra.setBounds(10, 62, 200, 20);
+		contentPane.add(txtLetra);
+		txtLetra.setColumns(10);
 	}
-
 }
