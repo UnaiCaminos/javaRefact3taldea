@@ -31,6 +31,8 @@ public class pertsona extends JFrame{
 	private JButton btnBilatu;
 	private JButton btnNewButton;
 	private JTextField txtLetra;
+	private JTextField txtIzena;
+	private JTextField txtHelbidea;
 
 	public pertsona() {
 	
@@ -87,5 +89,17 @@ public class pertsona extends JFrame{
 		});
 		btnGehitu_1.setBounds(10, 86, 89, 23);
 		contentPane.add(btnGehitu_1);
+		
+		txtIzena = new JTextField();
+		txtIzena.setText("Izena");
+		txtIzena.setBounds(10, 111, 86, 20);
+		contentPane.add(txtIzena);
+		txtIzena.setColumns(10);
+		
+		txtHelbidea = new JTextField();
+		txtHelbidea.setText("Helbidea");
+		txtHelbidea.setBounds(10, 134, 86, 20);
+		contentPane.add(txtHelbidea);
+		txtHelbidea.setColumns(10);
 	}
 }
