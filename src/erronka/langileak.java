@@ -90,13 +90,8 @@ public class langileak extends pertsona {
 					e1.printStackTrace();
 				}
 			}
-		});
-		contentPane.add(btnLangileak);
 		
-		JButton btnbiltegia = new JButton("Produktuak");
-		btnbiltegia.setBounds(4, 485, 158, 23);
-		btnbiltegia.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void produktuakTaulaIkusi() {
 				konexioa kon=new konexioa();
 				Connection conexion = kon.getConnection();
 				String sql = "SELECT * FROM produktuak";
@@ -133,13 +128,8 @@ public class langileak extends pertsona {
 					e1.printStackTrace();
 				}
 			}
-		});
-		contentPane.add(btnbiltegia);
-		
-		JButton btnGehitu = new JButton("Langileak gehitu");
-		btnGehitu.setBounds(4, 25, 148, 23);
-		btnGehitu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+	
+			public void langileakGehitu() {
 				try {
 				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
@@ -164,13 +154,8 @@ public class langileak extends pertsona {
 				}
 				
 			}
-		});
-		contentPane.add(btnGehitu);
 		
-		JButton btnKendu = new JButton("Langileak kendu");
-		btnKendu.setBounds(4, 240, 158, 23);
-		btnKendu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void langileaKendu() {
 				try {
 				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
@@ -187,13 +172,8 @@ public class langileak extends pertsona {
 					e1.printStackTrace();
 				}
 			}
-		});
-		contentPane.add(btnKendu);
 		
-		JButton btnAktualizatu = new JButton("Taula aktualizatu");
-		btnAktualizatu.setBounds(4, 314, 158, 23);
-		btnAktualizatu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void aktualizatuTaula(ActionEvent e) {
 				try {
 				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
@@ -214,111 +194,6 @@ public class langileak extends pertsona {
 					e1.printStackTrace();
 				}
 			}
-		});
-		contentPane.add(btnAktualizatu);
 		
-		txtIzena1 = new JTextField();
-		txtIzena1.setBounds(4, 50, 132, 20);
-		txtIzena1.setText("Izena");
-		contentPane.add(txtIzena1);
-		txtIzena1.setColumns(10);
 		
-		txtName = new JTextField();
-		txtName.setBounds(4, 265, 132, 20);
-		txtName.setText("Izena");
-		contentPane.add(txtName);
-		txtName.setColumns(10);
-		
-		textAbizena2 = new JTextField();
-		textAbizena2.setBounds(4, 289, 132, 20);
-		textAbizena2.setText("Abizena");
-		contentPane.add(textAbizena2);
-		textAbizena2.setColumns(10);
-		
-		txtModifikatu1 = new JTextField();
-		txtModifikatu1.setBounds(4, 391, 174, 20);
-		txtModifikatu1.setText("Modifikatu nahi den elementua");
-		contentPane.add(txtModifikatu1);
-		txtModifikatu1.setColumns(10);
-		
-		txtModifikatu2 = new JTextField();
-		txtModifikatu2.setBounds(4, 415, 174, 20);
-		txtModifikatu2.setText("Modifikazioa");
-		contentPane.add(txtModifikatu2);
-		txtModifikatu2.setColumns(10);
-		
-		txtModifikatu3 = new JTextField();
-		txtModifikatu3.setBounds(4, 440, 174, 20);
-		txtModifikatu3.setText("Modifikatu nahi den elementua");
-		contentPane.add(txtModifikatu3);
-		txtModifikatu3.setColumns(10);
-		
-		txtModifikatu4 = new JTextField();
-		txtModifikatu4.setBounds(4, 460, 174, 20);
-		txtModifikatu4.setText("Modifikazioa");
-		contentPane.add(txtModifikatu4);
-		txtModifikatu4.setColumns(10);
-		
-		textIzena1 = new JTextField();
-		textIzena1.setBounds(4, 342, 132, 20);
-		textIzena1.setText("Izena");
-		textIzena1.setToolTipText("");
-		contentPane.add(textIzena1);
-		textIzena1.setColumns(10);
-		
-		textAbizena1 = new JTextField();
-		textAbizena1.setBounds(4, 367, 132, 20);
-		textAbizena1.setText("Abizena");
-		contentPane.add(textAbizena1);
-		textAbizena1.setColumns(10);
-		
-		txtAbz2 = new JTextField();
-		txtAbz2.setBounds(4, 90, 132, 20);
-		txtAbz2.setText("Bigarren abizena");
-		contentPane.add(txtAbz2);
-		txtAbz2.setColumns(10);
-		
-		txtNan = new JTextField();
-		txtNan.setBounds(4, 110, 132, 20);
-		txtNan.setText("NAN");
-		contentPane.add(txtNan);
-		txtNan.setColumns(10);
-		
-		txtBankuZenb = new JTextField();
-		txtBankuZenb.setBounds(4, 152, 132, 20);
-		txtBankuZenb.setText("Banku zenbakia");
-		contentPane.add(txtBankuZenb);
-		txtBankuZenb.setColumns(10);
-		
-		txtLana = new JTextField();
-		txtLana.setBounds(4, 173, 132, 20);
-		txtLana.setText("Lan-postua");
-		contentPane.add(txtLana);
-		txtLana.setColumns(10);
-		
-		txtSalarioa = new JTextField();
-		txtSalarioa.setBounds(4, 195, 132, 20);
-		txtSalarioa.setText("salarioa");
-		contentPane.add(txtSalarioa);
-		txtSalarioa.setColumns(10);
-		
-		txtAbz1 = new JTextField();
-		txtAbz1.setBounds(4, 70, 132, 20);
-		txtAbz1.setText("Lehen abizena");
-		contentPane.add(txtAbz1);
-		txtAbz1.setColumns(10);
-		
-		txtAdmin = new JTextField();
-		txtAdmin.setText("Admin");
-		txtAdmin.setColumns(10);
-		txtAdmin.setBounds(4, 217, 132, 20);
-		contentPane.add(txtAdmin);
-		
-		txtTelefonoa = new JTextField();
-		txtTelefonoa.setText("Telefonoa");
-		txtTelefonoa.setColumns(10);
-		txtTelefonoa.setBounds(4, 131, 132, 20);
-		contentPane.add(txtTelefonoa);
-		contentPane.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{btnKendu, btnHornitzailea, table, btnLangileak, btnbiltegia, btnGehitu, btnAktualizatu, txtIzena1, txtName, textAbizena2, txtModifikatu1, txtModifikatu2, txtModifikatu3, txtModifikatu4, textIzena1, textAbizena1, txtAbz2, txtNan, txtBankuZenb, txtLana, txtSalarioa, txtAbz1, txtAdmin, txtTelefonoa}));
-	}
 }
