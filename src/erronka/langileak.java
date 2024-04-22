@@ -52,52 +52,6 @@ public class langileak extends pertsona {
 
 		setContentPane(contentPane);
 		
-		JButton btnHornitzailea = new JButton("Hornitzaileen taula");
-		btnHornitzailea.setBounds(4, 510, 158, 23);
-		btnHornitzailea.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				konexioa kon=new konexioa();
-				Connection conexion = kon.getConnection();
-				String sql = "SELECT * FROM hornitzaileak";
-				Statement st;
-				ResultSet rs;
-				
-				DefaultTableModel model =new DefaultTableModel();
-				
-				model.addColumn("id");
-				model.addColumn("Telefonoa");
-				model.addColumn("Enpresa");
-				model.addColumn("produktua");
-				model.addColumn("banku_zenbakia");
-				model.addColumn("NIF");
-				
-				table.setModel(model);
-				String[] array = new String[6];
-				try {
-					st=conexion.createStatement();
-					rs = st.executeQuery(sql);
-					while (rs.next()) {
-						//System.out.println(rs.getString(2));
-						array[0]=rs.getString(1);
-						array[1]=rs.getString(2);
-						array[2]=rs.getString(3);
-						array[3]=rs.getString(4);
-						array[4]=rs.getString(5);
-						array[5]=rs.getString(6);
-						model.addRow(array);
-						
-					}
-					
-					
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		contentPane.setLayout(null);
-		contentPane.add(btnHornitzailea);
-		
 		table = new JTable();
 		table.setBounds(188, 15, 759, 472);
 		contentPane.add(table);

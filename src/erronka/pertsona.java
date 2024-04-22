@@ -141,6 +141,15 @@ public class pertsona extends JFrame{
 		btnKendu_1.setBounds(10, 239, 89, 23);
 		contentPane.add(btnKendu_1);
 		
+		JButton btnLangilea = new JButton("Langileen taula");
+		btnLangilea.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btnLangilea.setBounds(10, 286, 127, 23);
+		contentPane.add(btnLangilea);
+		
 		txtNif = new JTextField();
 		txtNif.setText("NIF");
 		txtNif.setBounds(10, 262, 86, 20);
