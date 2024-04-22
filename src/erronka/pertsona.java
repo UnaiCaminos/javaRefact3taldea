@@ -77,5 +77,15 @@ public class pertsona extends JFrame{
 		txtLetra.setBounds(10, 62, 200, 20);
 		contentPane.add(txtLetra);
 		txtLetra.setColumns(10);
+		
+		JButton btnGehitu_1 = new JButton("Gehitu");
+		btnGehitu_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Hornitzaileak h1 = new Hornitzaileak();
+				h1.hornitzaileaGehitu();
+			}
+		});
+		btnGehitu_1.setBounds(10, 86, 89, 23);
+		contentPane.add(btnGehitu_1);
 	}
 }
