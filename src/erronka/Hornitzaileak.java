@@ -26,9 +26,9 @@ public class Hornitzaileak extends pertsona {
 	private JTextField txtLetra;
 	private JButton btnGehitu;
 	private JTextField txtIzena;
-	private JTextField txtHelbidea;
+	private JTextField txtBankuZenbakia;
 	private JTextField txtTelefonoa;
-	private JTextField txtKorreoa;
+	private JTextField txtProduktua;
 	private JTextField txtId;
 	private JButton btnNewButton;
 	private JTextField txtName;
@@ -123,16 +123,15 @@ public class Hornitzaileak extends pertsona {
 				try {
 				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
-				    String izn,tel,helbidea,Id,korreoa,nan,testua;
-				    izn=txtIzena.getText();
-				    helbidea=txtHelbidea.getText();
-				    tel=txtTelefonoa.getText();
-				    korreoa=txtKorreoa.getText();
+				    String izn,tel,helbidea,Id,nif,prod,bank_num;
 				    Id=txtId.getText();
-				    nan=txtNanNif.getText();
-				    testua=txtTestua.getText();
+				    nif=txtNanNif.getText();
+				    izn=txtIzena.getText();
+				    prod=txtProduktua.getText();
+				    tel=txtTelefonoa.getText();
+				    bank_num=txtBankuZenbakia.getText();
 				    String query ="INSERT INTO erronkadb.hornitzaileak"
-						+ " Values('"+Id+"', '"+tel+"', '"+izn+"', '"+korreoa+"', '"+helbidea+"', '"+nan+"', '"+testua+"')";
+						+ " Values('"+Id+"', '"+nif+"', '"+izn+"', '"+prod+"', '"+tel+"', '"+bank_num+"')";
 				    Statement stmt;
 				
 					stmt = conexion.createStatement();

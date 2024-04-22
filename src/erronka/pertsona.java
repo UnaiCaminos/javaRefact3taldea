@@ -32,7 +32,11 @@ public class pertsona extends JFrame{
 	private JButton btnNewButton;
 	private JTextField txtLetra;
 	private JTextField txtIzena;
-	private JTextField txtHelbidea;
+	private JTextField txtBankuZenbakia;
+	private JTextField txtTelefonoa;
+	private JTextField txtProduktua;
+	private JTextField txtId;
+	private JTextField txtNanNif;
 
 	public pertsona() {
 	
@@ -92,14 +96,38 @@ public class pertsona extends JFrame{
 		
 		txtIzena = new JTextField();
 		txtIzena.setText("Izena");
-		txtIzena.setBounds(10, 111, 86, 20);
+		txtIzena.setBounds(10, 151, 86, 20);
 		contentPane.add(txtIzena);
 		txtIzena.setColumns(10);
 		
-		txtHelbidea = new JTextField();
-		txtHelbidea.setText("Helbidea");
-		txtHelbidea.setBounds(10, 134, 86, 20);
-		contentPane.add(txtHelbidea);
-		txtHelbidea.setColumns(10);
+		txtBankuZenbakia = new JTextField();
+		txtBankuZenbakia.setText("banku-zenbakia");
+		txtBankuZenbakia.setBounds(10, 215, 86, 20);
+		contentPane.add(txtBankuZenbakia);
+		txtBankuZenbakia.setColumns(10);
+		
+		txtTelefonoa = new JTextField();
+		txtTelefonoa.setText("Telefonoa");
+		txtTelefonoa.setBounds(10, 194, 96, 19);
+		contentPane.add(txtTelefonoa);
+		txtTelefonoa.setColumns(10);
+		
+		txtProduktua = new JTextField();
+		txtProduktua.setText("Produktua");
+		txtProduktua.setColumns(10);
+		txtProduktua.setBounds(10, 173, 96, 19);
+		contentPane.add(txtProduktua);
+		
+		txtId = new JTextField();
+		txtId.setText("Id");
+		txtId.setColumns(10);
+		txtId.setBounds(10, 109, 96, 19);
+		contentPane.add(txtId);
+		
+		txtNanNif = new JTextField();
+		txtNanNif.setText("NIF");
+		txtNanNif.setColumns(10);
+		txtNanNif.setBounds(10, 130, 96, 19);
+		contentPane.add(txtNanNif);
 	}
 }
