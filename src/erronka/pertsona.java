@@ -144,7 +144,8 @@ public class pertsona extends JFrame{
 		JButton btnLangilea = new JButton("Langileen taula");
 		btnLangilea.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				langileak l1 = new langileak();
+				l1.langileaBilatu();
 			}
 		});
 		btnLangilea.setBounds(10, 286, 127, 23);

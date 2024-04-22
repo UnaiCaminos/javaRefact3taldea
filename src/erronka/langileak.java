@@ -45,21 +45,8 @@ public class langileak extends pertsona {
 	private JTextField txtTelefonoa;
 
 	public langileak() {
-		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 778, 758);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		setContentPane(contentPane);
 		
-		table = new JTable();
-		table.setBounds(188, 15, 759, 472);
-		contentPane.add(table);
-		
-		JButton btnLangileak = new JButton("Langileak");
-		btnLangileak.setBounds(4, 0, 148, 23);
-		btnLangileak.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void langileaBilatu() {
 				konexioa kon=new konexioa();
 				Connection conexion = kon.getConnection();
 				String sql = "SELECT * FROM Langileak";
