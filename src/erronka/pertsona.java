@@ -48,8 +48,6 @@ public class pertsona extends JFrame{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		table.setBounds(0, 311, 89, 23);
-		contentPane.add(table);
 		
 		
 		JButton btnTaula = new JButton("Hornitzaileen taula");
@@ -64,7 +62,7 @@ public class pertsona extends JFrame{
 		contentPane.add(btnTaula);
 		
 		table = new JTable();
-		table.setBounds(188, 15, 759, 472);
+		table.setBounds(203, 11, 759, 472);
 		contentPane.add(table);
 		
 
