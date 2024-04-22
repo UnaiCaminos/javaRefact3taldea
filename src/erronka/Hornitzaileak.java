@@ -2,38 +2,27 @@ package erronka;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JButton;
 import javax.swing.JTable;
-import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
 public class Hornitzaileak extends pertsona {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
 	private JTable table;
-	private JButton btnTaula;
 	private JTextField txtLetra;
-	private JButton btnGehitu;
 	private JTextField txtIzena;
 	private JTextField txtBankuZenbakia;
 	private JTextField txtTelefonoa;
 	private JTextField txtProduktua;
 	private JTextField txtId;
-	private JButton btnNewButton;
 	private JTextField txtNif;
 	private JTextField txtNanNif;
-	private JTextField txtTestua;
 
 	public void hornitzaileaBilatu() {
 	
@@ -122,7 +111,7 @@ public class Hornitzaileak extends pertsona {
 				try {
 				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
-				    String izn,tel,helbidea,Id,nif,prod,bank_num;
+				    String izn,tel,Id,nif,prod,bank_num;
 				    Id=txtId.getText();
 				    nif=txtNanNif.getText();
 				    izn=txtIzena.getText();
