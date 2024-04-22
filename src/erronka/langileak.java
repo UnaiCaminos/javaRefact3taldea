@@ -11,20 +11,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import javax.swing.JButton;
+
 import javax.swing.JTextField;
-import java.awt.event.ActionListener;
+
 import java.awt.event.ActionEvent;
 
 import javax.swing.JTable;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-import java.awt.Component;
-import java.awt.EventQueue;
+
 
 public class langileak extends pertsona {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
 	private JTable table;
 	private JTextField txtIzena1;
 	private JTextField txtAbz1;
@@ -41,7 +38,6 @@ public class langileak extends pertsona {
 	private JTextField txtModifikatu4;
 	private JTextField textIzena1;
 	private JTextField textAbizena1;
-	private JTextField txtAdmin;
 	private JTextField txtTelefonoa;
 		
 			public void langileaBilatu() {
