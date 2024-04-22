@@ -37,6 +37,7 @@ public class pertsona extends JFrame{
 	private JTextField txtProduktua;
 	private JTextField txtId;
 	private JTextField txtNanNif;
+	private JTextField txtNif;
 
 	public pertsona() {
 	
@@ -129,5 +130,21 @@ public class pertsona extends JFrame{
 		txtNanNif.setColumns(10);
 		txtNanNif.setBounds(10, 130, 96, 19);
 		contentPane.add(txtNanNif);
+		
+		JButton btnKendu_1 = new JButton("Kendu");
+		btnKendu_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Hornitzaileak h1 = new Hornitzaileak();
+				h1.hornitzaileaKendu();
+			}
+		});
+		btnKendu_1.setBounds(10, 239, 89, 23);
+		contentPane.add(btnKendu_1);
+		
+		txtNif = new JTextField();
+		txtNif.setText("NIF");
+		txtNif.setBounds(10, 262, 86, 20);
+		contentPane.add(txtNif);
+		txtNif.setColumns(10);
 	}
 }
