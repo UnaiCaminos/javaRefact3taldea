@@ -31,8 +31,7 @@ public class Hornitzaileak extends pertsona {
 	private JTextField txtProduktua;
 	private JTextField txtId;
 	private JButton btnNewButton;
-	private JTextField txtName;
-	private JTextField txtId2;
+	private JTextField txtNif;
 	private JTextField txtNanNif;
 	private JTextField txtTestua;
 
@@ -147,10 +146,9 @@ public class Hornitzaileak extends pertsona {
 				try {
 				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
-				    String izena, Id2;
-				    izena=txtName.getText();
-				    Id2=txtId2.getText();
-				    String query ="DELETE FROM erronkadb.hornitzaileak WHERE EnpresarenIzena= '"+izena+"'&& id= '"+Id2+"'";
+				    String nif;
+				    nif=txtNif.getText();
+				    String query ="DELETE FROM erronkadb.hornitzaileak WHERE NIF= '"+nif+"'";
 				    Statement st;
 					st = conexion.createStatement();
 					st.executeUpdate(query);
