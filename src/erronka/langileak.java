@@ -43,8 +43,6 @@ public class langileak extends pertsona {
 	private JTextField textAbizena1;
 	private JTextField txtAdmin;
 	private JTextField txtTelefonoa;
-
-	public langileak() {
 		
 			public void langileaBilatu() {
 				konexioa kon=new konexioa();
@@ -195,5 +193,5 @@ public class langileak extends pertsona {
 				}
 			}
 		
-		
+	
 }
