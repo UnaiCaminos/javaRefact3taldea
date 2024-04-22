@@ -29,7 +29,6 @@ public class pertsona extends JFrame{
 	private JButton btnTaula;
 	private JButton btnGehitu;
 	private JButton btnBilatu;
-	private JButton btnNewButton;
 	private JTextField txtLetra;
 	private JTextField txtIzena;
 	private JTextField txtBankuZenbakia;
@@ -48,8 +47,9 @@ public class pertsona extends JFrame{
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		btnNewButton.setBounds(0, 311, 89, 23);
-		contentPane.add(btnNewButton);
+		
+		table.setBounds(0, 311, 89, 23);
+		contentPane.add(table);
 		
 		
 		JButton btnTaula = new JButton("Hornitzaileen taula");
