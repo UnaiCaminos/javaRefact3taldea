@@ -3,6 +3,7 @@ package erronka;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
@@ -14,12 +15,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
 
 public class eskaria extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
+	private JTextField txtPlaterarenIda;
+	private JTextField txtKopurua;
 	
 	public eskaria() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -34,12 +38,12 @@ public class eskaria extends JFrame {
 		table.setBounds(208, 10, 814, 695);
 		contentPane.add(table);
 		
-		JButton btnNewButton = new JButton("Katalogoa");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnKatalogoa = new JButton("Katalogoa");
+		btnKatalogoa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				konexioa kon=new konexioa();
 				Connection conexion = kon.getConnection();
-				String sql = "SELECT * FROM Langileak";
+				String sql = "SELECT * FROM erronkadb.platerak";
 				Statement st;
 				ResultSet rs;
 				
@@ -72,8 +76,44 @@ public class eskaria extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(30, 21, 85, 21);
-		contentPane.add(btnNewButton);
+		btnKatalogoa.setBounds(30, 21, 85, 21);
+		contentPane.add(btnKatalogoa);
+		
+		JButton btnBidali = new JButton("Bidali");
+		btnBidali.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+				    konexioa kon=new konexioa();
+				    Connection conexion = kon.getConnection();
+				    String id, kopurua;
+				    id=txtPlaterarenIda.getText();
+				    kopurua=txtKopurua.getText();
+				    String query ="INSERT INTO erronkadb.eskaria"
+						+ " Values("+id+", "+kopurua+")";
+				    Statement stmt;
+					stmt = conexion.createStatement();
+					stmt .executeUpdate(query);
+					JOptionPane.showMessageDialog(null, "Datuak ondo gehitu dira");
+				} catch (SQLException e1) {
+					JOptionPane.showMessageDialog(null, "Datuak ezin dira gehitu");
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnBidali.setBounds(30, 44, 89, 23);
+		contentPane.add(btnBidali);
+		
+		txtPlaterarenIda = new JTextField();
+		txtPlaterarenIda.setText("Plateraren id-a");
+		txtPlaterarenIda.setBounds(30, 69, 113, 20);
+		contentPane.add(txtPlaterarenIda);
+		txtPlaterarenIda.setColumns(10);
+		
+		txtKopurua = new JTextField();
+		txtKopurua.setText("Kopurua");
+		txtKopurua.setBounds(30, 93, 113, 20);
+		contentPane.add(txtKopurua);
+		txtKopurua.setColumns(10);
 	}
 }
 
