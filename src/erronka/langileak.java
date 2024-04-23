@@ -29,9 +29,9 @@ public class langileak extends pertsona {
 	private JTextField txtNan;
 	private JTextField txtBankuZenb;
 	private JTextField txtLana;
-	private JTextField txtSalarioa;
+	private JTextField txtAdmin;
 	private JTextField txtName;
-	private JTextField textAbizena2;
+	private JTextField txtNan2;
 	private JTextField txtModifikatu1;
 	private JTextField txtModifikatu2;
 	private JTextField txtModifikatu3;
@@ -40,7 +40,7 @@ public class langileak extends pertsona {
 	private JTextField textAbizena1;
 	private JTextField txtTelefonoa;
 		
-			public void langileaBilatu() {
+			public void langileaTaula() {
 				konexioa kon=new konexioa();
 				Connection conexion = kon.getConnection();
 				String sql = "SELECT * FROM Langileak";
@@ -127,7 +127,7 @@ public class langileak extends pertsona {
 				try {
 				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
-				    String izena,abz1,abz2,Nan,tel,BankuZenb,lan_postua,salarioa;
+				    String izena,abz1,abz2,Nan,tel,BankuZenb,lan_postua,admin;
 				    izena=txtIzena1.getText();
 				    abz1=txtAbz1.getText();
 				    abz2=txtAbz2.getText();
@@ -135,9 +135,9 @@ public class langileak extends pertsona {
 				    tel=txtTelefonoa.getText();
 				    BankuZenb=txtBankuZenb.getText();
 				    lan_postua=txtLana.getText();
-				    salarioa=txtSalarioa.getText();
+				    admin=txtAdmin.getText();
 				    String query ="INSERT INTO erronkadb.langileak"
-						+ " Values('"+Nan+"', '"+izena+"', '"+abz1+"', '"+abz2+"', '"+tel+"', '"+BankuZenb+"', '"+lan_postua+"', '"+salarioa+"')";
+						+ " Values('"+Nan+"', '"+izena+"', '"+abz1+"', '"+abz2+"', '"+tel+"', '"+BankuZenb+"', '"+lan_postua+"', '"+admin+"')";
 				    Statement stmt;
 					stmt = conexion.createStatement();
 					stmt .executeUpdate(query);
@@ -153,10 +153,10 @@ public class langileak extends pertsona {
 				try {
 				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
-				    String langilea, abizena;
+				    String langilea, nan;
 				    langilea=txtName.getText();
-				    abizena=textAbizena2.getText();
-				    String query ="DELETE FROM erronkadb.langileak WHERE izena= '"+langilea+"'&& abizena1= '"+abizena+"'";
+				    nan=txtNan2.getText();
+				    String query ="DELETE FROM erronkadb.langileak WHERE NAN= '"+nan+"'&& izena= '"+langilea+"'";
 				    Statement st;
 					st = conexion.createStatement();
 					st.executeUpdate(query);

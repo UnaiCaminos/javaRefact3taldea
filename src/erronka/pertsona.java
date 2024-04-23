@@ -48,8 +48,6 @@ public class pertsona extends JFrame{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		
-		
 		JButton btnTaula = new JButton("Hornitzaileen taula");
 		btnTaula.setBounds(10, 11, 158, 23);
 		btnTaula.addActionListener(new ActionListener() {
@@ -62,7 +60,6 @@ public class pertsona extends JFrame{
 		contentPane.add(btnTaula);
 		
 		table = new JTable();
-		table = this.table;
 		table.setBounds(203, 11, 759, 472);
 		contentPane.add(table);
 		
@@ -78,21 +75,59 @@ public class pertsona extends JFrame{
 		contentPane.setLayout(null);
 		contentPane.add(btnHornitzailea);
 		
-		txtLetra = new JTextField();
-		txtLetra.setText("Sartu izenaren lehenengo letrak");
-		txtLetra.setBounds(10, 62, 200, 20);
-		contentPane.add(txtLetra);
-		txtLetra.setColumns(10);
-		
-		JButton btnGehitu_1 = new JButton("Gehitu");
+		JButton btnGehitu_1 = new JButton("Gehitu hornitzailea");
 		btnGehitu_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Hornitzaileak h1 = new Hornitzaileak();
 				h1.hornitzaileaGehitu();
 			}
 		});
-		btnGehitu_1.setBounds(10, 86, 89, 23);
+		btnGehitu_1.setBounds(10, 86, 142, 23);
 		contentPane.add(btnGehitu_1);
+		
+		JButton btnKendu_1 = new JButton("Kendu hornitzailea");
+		btnKendu_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Hornitzaileak h1 = new Hornitzaileak();
+				h1.hornitzaileaKendu();
+			}
+		});
+		btnKendu_1.setBounds(10, 239, 158, 23);
+		contentPane.add(btnKendu_1);
+		
+		JButton btnLangilea = new JButton("Langileen taula");
+		btnLangilea.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				langileak l1 = new langileak();
+				l1.langileaTaula();
+			}
+		});
+		btnLangilea.setBounds(10, 286, 127, 23);
+		contentPane.add(btnLangilea);
+		
+		JButton btnProduktuenTaula = new JButton("Produktuen taula");
+		btnProduktuenTaula.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				langileak l1 = new langileak();
+				l1.produktuakTaulaIkusi();
+			}
+		});
+		btnProduktuenTaula.setBounds(10, 308, 127, 23);
+		contentPane.add(btnProduktuenTaula);
+		
+		
+		
+		txtLetra = new JTextField();
+		txtLetra.setText("Sartu izenaren lehenengo letrak");
+		txtLetra.setBounds(10, 62, 200, 20);
+		contentPane.add(txtLetra);
+		txtLetra.setColumns(10);
+		
+		txtNif = new JTextField();
+		txtNif.setText("NIF");
+		txtNif.setBounds(10, 262, 86, 20);
+		contentPane.add(txtNif);
+		txtNif.setColumns(10);
 		
 		txtIzena = new JTextField();
 		txtIzena.setText("Izena");
@@ -129,31 +164,5 @@ public class pertsona extends JFrame{
 		txtNanNif.setColumns(10);
 		txtNanNif.setBounds(10, 130, 96, 19);
 		contentPane.add(txtNanNif);
-		
-		JButton btnKendu_1 = new JButton("Kendu");
-		btnKendu_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Hornitzaileak h1 = new Hornitzaileak();
-				h1.hornitzaileaKendu();
-			}
-		});
-		btnKendu_1.setBounds(10, 239, 89, 23);
-		contentPane.add(btnKendu_1);
-		
-		JButton btnLangilea = new JButton("Langileen taula");
-		btnLangilea.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				langileak l1 = new langileak();
-				l1.langileaBilatu();
-			}
-		});
-		btnLangilea.setBounds(10, 286, 127, 23);
-		contentPane.add(btnLangilea);
-		
-		txtNif = new JTextField();
-		txtNif.setText("NIF");
-		txtNif.setBounds(10, 262, 86, 20);
-		contentPane.add(txtNif);
-		txtNif.setColumns(10);
 	}
 }
