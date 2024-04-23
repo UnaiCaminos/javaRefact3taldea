@@ -134,7 +134,7 @@ public class produktuak extends JFrame {
 				Connection conexion = kon.getConnection();
 				String Id;
 				Id=textId2.getText();
-				String sql = "SELECT * FROM produktuak WHERE Id='"+Id+"'";
+				String sql = "SELECT * FROM produktuak WHERE id_produktuak="+Id;
 				Statement st;
 				ResultSet rs;
 				
@@ -181,7 +181,7 @@ public class produktuak extends JFrame {
 				    mod4=txtMod4.getText();
 				    id=txtProdId.getText();
 				    izn=txtIzena.getText();
-				    String query ="UPDATE produktuak SET "+mod1+" ='"+mod2+"', "+mod3+" ='"+mod4+"' WHERE izena= '"+izn+"'&& id_Produktuak="+id;
+				    String query ="UPDATE produktuak SET "+mod1+" ='"+mod2+"', "+mod3+" ='"+mod4+"' WHERE izena= '"+izn+"'&& id_produktuak="+id;
 				    Statement st;
 					st = conexion.createStatement();
 					st .executeUpdate(query);
@@ -203,7 +203,7 @@ public class produktuak extends JFrame {
 				    Connection conexion = kon.getConnection();
 				    String id;
 				    id=txtId_1.getText();
-				    String query ="DELETE FROM erronkadb.produktuak WHERE id= "+id;
+				    String query ="DELETE FROM erronkadb.produktuak WHERE id_produktuak= "+id;
 				    Statement st;
 					st = conexion.createStatement();
 					st.executeUpdate(query);

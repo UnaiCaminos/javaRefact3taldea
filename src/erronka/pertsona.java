@@ -23,6 +23,8 @@ import static javax.swing.JOptionPane.showMessageDialog;
 
 import java.awt.Component;
 import java.awt.EventQueue;
+import javax.swing.JLabel;
+import java.awt.Color;
 
 public class pertsona extends JFrame{
 	
@@ -501,5 +503,17 @@ public class pertsona extends JFrame{
 		txtLangileaId.setColumns(10);
 		txtLangileaId.setBounds(10, 356, 86, 20);
 		contentPane.add(txtLangileaId);
+		
+		JLabel lblJarriNahiDuzuna = new JLabel("Jarri nahi duzuna zenbakia ez bada jarri bi komilla(')-ren artean ");
+		lblJarriNahiDuzuna.setForeground(Color.BLACK);
+		lblJarriNahiDuzuna.setBackground(Color.BLUE);
+		lblJarriNahiDuzuna.setBounds(203, 725, 466, 14);
+		contentPane.add(lblJarriNahiDuzuna);
+		
+		JLabel lblJarriNahiDuzuna_1 = new JLabel("Jarri nahi duzuna zenbakia ez bada jarri bi komilla(')-ren artean ");
+		lblJarriNahiDuzuna_1.setForeground(Color.BLACK);
+		lblJarriNahiDuzuna_1.setBackground(Color.BLUE);
+		lblJarriNahiDuzuna_1.setBounds(203, 767, 466, 14);
+		contentPane.add(lblJarriNahiDuzuna_1);
 	}
 }

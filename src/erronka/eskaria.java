@@ -33,6 +33,8 @@ public class eskaria extends JFrame {
 	private JTextField txtAbizena;
 	private JButton btnEskariak;
 	private JTextField txtMahiZenbakia;
+	private JButton btnEskariaBilatu;
+	private JTextField txtIdEskaria;
 	
 	public eskaria() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -73,7 +75,6 @@ public class eskaria extends JFrame {
 						array[1]=rs.getString(2);
 						array[2]=rs.getString(3);
 						array[3]=rs.getString(4);
-						array[4]=rs.getString(5);
 						model.addRow(array);
 						
 					}
@@ -99,9 +100,10 @@ public class eskaria extends JFrame {
 				    kopurua=txtKopurua.getText();
 				    idBezeroa=txtBezeroarenIda.getText();
 				    idEskaria=txtEskariarenIda.getText();
+				    mahiZenbakia=txtMahiZenbakia.getText();
 				    
 				    String query ="INSERT INTO erronkadb.eskaria"
-						+ " Values("+idEskaria+", "+idBezeroa+", "+id+", "+kopurua+",)";
+						+ " Values("+idEskaria+", "+idBezeroa+", "+id+", "+kopurua+", "+mahiZenbakia+")";
 				    Statement stmt;
 					stmt = conexion.createStatement();
 					stmt .executeUpdate(query);
@@ -123,14 +125,14 @@ public class eskaria extends JFrame {
 				abizena=txtAbizena.getText();
 				konexioa kon=new konexioa();
 				Connection conexion = kon.getConnection();
-				String sql = "SELECT * FROM bezeroa WHERE izena= '"+izena+"'&& abizena='"+abizena+"'";
+				String sql = "SELECT * FROM erronkadb.bezeroa WHERE izena= '"+izena+"'&& abizena='"+abizena+"'";
 				Statement st;
 				ResultSet rs;
 				
 				DefaultTableModel model =new DefaultTableModel();
 				
-				model.addColumn("NAN");
-				model.addColumn("idBezeroa");
+				model.addColumn("idbezeroa");
+				model.addColumn("Nan");
 				model.addColumn("izena");
 				model.addColumn("abizena");
 				model.addColumn("abizena2");
@@ -176,7 +178,7 @@ public class eskaria extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				konexioa kon=new konexioa();
 				Connection conexion = kon.getConnection();
-				String sql = "SELECT * FROM eskaria";
+				String sql = "SELECT * FROM erronkadb.eskaria";
 				Statement st;
 				ResultSet rs;
 				
@@ -189,7 +191,7 @@ public class eskaria extends JFrame {
 				model.addColumn("5");
 				
 				table.setModel(model);
-				String[] array = new String[4];
+				String[] array = new String[5];
 				try {
 					st=conexion.createStatement();
 					rs = st.executeQuery(sql);
@@ -209,6 +211,47 @@ public class eskaria extends JFrame {
 		});
 		btnEskariak.setBounds(30, 254, 85, 21);
 		contentPane.add(btnEskariak);
+		
+		btnEskariaBilatu = new JButton("Eskaria bilatu");
+		btnEskariaBilatu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				konexioa kon=new konexioa();
+				Connection conexion = kon.getConnection();
+				String id;
+				id = txtIdEskaria.getText();
+				String sql = "SELECT * FROM erronkadb.eskaria WHERE ideskatutakoPlaterak="+id;
+				Statement st;
+				ResultSet rs;
+				
+				DefaultTableModel model =new DefaultTableModel();
+				
+				model.addColumn("1");
+				model.addColumn("2");
+				model.addColumn("3");
+				model.addColumn("4");
+				model.addColumn("5");
+				
+				table.setModel(model);
+				String[] array = new String[5];
+				try {
+					st=conexion.createStatement();
+					rs = st.executeQuery(sql);
+					while (rs.next()) {
+						array[0]=rs.getString(1);
+						array[1]=rs.getString(2);
+						array[2]=rs.getString(3);
+						array[3]=rs.getString(4);
+						array[4]=rs.getString(5);
+						model.addRow(array);
+					}
+					
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+			    }
+			}
+		});
+		btnEskariaBilatu.setBounds(30, 277, 96, 21);
+		contentPane.add(btnEskariaBilatu);
 		
 		txtPlaterarenIda = new JTextField();
 		txtPlaterarenIda.setText("Plateraren id-a");
@@ -251,6 +294,12 @@ public class eskaria extends JFrame {
 		txtMahiZenbakia.setColumns(10);
 		txtMahiZenbakia.setBounds(30, 161, 113, 20);
 		contentPane.add(txtMahiZenbakia);
+		
+		txtIdEskaria = new JTextField();
+		txtIdEskaria.setText("Id-a eskaria");
+		txtIdEskaria.setColumns(10);
+		txtIdEskaria.setBounds(30, 299, 96, 19);
+		contentPane.add(txtIdEskaria);
 		
 	}
 }

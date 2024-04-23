@@ -26,7 +26,7 @@ public class langileak extends pertsona {
 				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
 				    String query ="INSERT INTO erronkadb.langilea"
-						+ " Values("+idLangilea+"' ,'"+Nan+"', '"+izena+"', '"+abz1+"', '"+abz2+"', '"+tel+"', '"+BankuZenb+"', '"+lan_postua+"', '"+admin+"')";
+						+ " Values("+idLangilea+" ,'"+Nan+"', '"+izena+"', '"+abz1+"', '"+abz2+"', '"+tel+"', '"+BankuZenb+"', '"+lan_postua+"', "+admin+")";
 				    Statement stmt;
 					stmt = conexion.createStatement();
 					stmt .executeUpdate(query);
@@ -57,7 +57,7 @@ public class langileak extends pertsona {
 				try {
 				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
-				    String query ="UPDATE langilea SET "+mod1+" ='"+mod2+"', "+mod3+" ='"+mod4+"' WHERE izena= '"+izn+"'&& abizena1='"+abz+"'";
+				    String query ="UPDATE langilea SET "+mod1+" ="+mod2+", "+mod3+" ="+mod4+" WHERE izena= '"+izn+"'&& abizena='"+abz+"'";
 				    Statement st;
 					st = conexion.createStatement();
 					st .executeUpdate(query);
