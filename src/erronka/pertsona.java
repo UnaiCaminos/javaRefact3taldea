@@ -49,11 +49,18 @@ public class pertsona extends JFrame{
 	private JButton btnProduktuakKendu;
 	private JTextField txtName;
 	private JTextField txtNan2;
+	private JButton btnProduktuakKendu_1;
+	private JTextField textIzena1;
+	private JTextField textAbizena1;
+	private JTextField txtModifikatu1;
+	private JTextField txtModifikatu2;
+	private JTextField txtModifikatu3;
+	private JTextField txtModifikatu4;
 
 	public pertsona() {
 	
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 964, 760);
+		setBounds(100, 100, 964, 831);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -254,5 +261,45 @@ public class pertsona extends JFrame{
 		txtNan2.setColumns(10);
 		txtNan2.setBounds(10, 578, 86, 20);
 		contentPane.add(txtNan2);
+		
+		btnProduktuakKendu_1 = new JButton("Produktuak aktualizatu");
+		btnProduktuakKendu_1.setBounds(10, 599, 158, 23);
+		contentPane.add(btnProduktuakKendu_1);
+		
+		textIzena1 = new JTextField();
+		textIzena1.setText("Izena");
+		textIzena1.setColumns(10);
+		textIzena1.setBounds(10, 625, 86, 20);
+		contentPane.add(textIzena1);
+		
+		textAbizena1 = new JTextField();
+		textAbizena1.setText("Lehen abizena");
+		textAbizena1.setColumns(10);
+		textAbizena1.setBounds(10, 647, 86, 20);
+		contentPane.add(textAbizena1);
+		
+		txtModifikatu1 = new JTextField();
+		txtModifikatu1.setText("Modifikatu nahi dena");
+		txtModifikatu1.setColumns(10);
+		txtModifikatu1.setBounds(10, 670, 174, 20);
+		contentPane.add(txtModifikatu1);
+		
+		txtModifikatu2 = new JTextField();
+		txtModifikatu2.setText("Modifikazioa");
+		txtModifikatu2.setColumns(10);
+		txtModifikatu2.setBounds(10, 693, 174, 20);
+		contentPane.add(txtModifikatu2);
+		
+		txtModifikatu3 = new JTextField();
+		txtModifikatu3.setText("Modifikatu nahi dena");
+		txtModifikatu3.setColumns(10);
+		txtModifikatu3.setBounds(10, 716, 174, 20);
+		contentPane.add(txtModifikatu3);
+		
+		txtModifikatu4 = new JTextField();
+		txtModifikatu4.setText("Modifikazioa");
+		txtModifikatu4.setColumns(10);
+		txtModifikatu4.setBounds(10, 739, 174, 20);
+		contentPane.add(txtModifikatu4);
 	}
 }
