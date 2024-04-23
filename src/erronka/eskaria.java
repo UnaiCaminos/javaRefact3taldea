@@ -1,5 +1,7 @@
 package erronka;
 
+import static javax.swing.JOptionPane.showMessageDialog;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -26,6 +28,9 @@ public class eskaria extends JFrame {
 	private JTextField txtKopurua;
 	private JTextField txtBezeroarenIda;
 	private JTextField txtEskariarenIda;
+	private JButton btnBezeroa;
+	private JTextField txtBezeroarenIzena;
+	private JTextField txtAbizena;
 	
 	public eskaria() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -130,6 +135,74 @@ public class eskaria extends JFrame {
 		txtEskariarenIda.setColumns(10);
 		txtEskariarenIda.setBounds(30, 142, 113, 20);
 		contentPane.add(txtEskariarenIda);
+		
+		btnBezeroa = new JButton("Bezeroa ");
+		btnBezeroa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String izena, abizena;
+				izena=txtBezeroarenIzena.getText();
+				abizena=txtAbizena.getText();
+				konexioa kon=new konexioa();
+				Connection conexion = kon.getConnection();
+				String sql = "SELECT * FROM bezeroa WHERE izena= '"+izena+"'&& abizena='"+abizena+"'";
+				Statement st;
+				ResultSet rs;
+				
+				DefaultTableModel model =new DefaultTableModel();
+				
+				model.addColumn("NAN");
+				model.addColumn("idBezeroa");
+				model.addColumn("izena");
+				model.addColumn("abizena");
+				model.addColumn("abizena2");
+				model.addColumn("banku_zenbakia");
+				model.addColumn("telefonoa");
+				model.addColumn("emaila");
+				model.addColumn("usuarioa");
+				model.addColumn("pasahitza");
+				
+				table.setModel(model);
+				String[] array = new String[10];
+				try {
+					st=conexion.createStatement();
+					rs = st.executeQuery(sql);
+					while (rs.next()) {
+						//System.out.println(rs.getString(2));
+						array[0]=rs.getString(1);
+						array[1]=rs.getString(2);
+						array[2]=rs.getString(3);
+						array[3]=rs.getString(4);
+						array[4]=rs.getString(5);
+						array[5]=rs.getString(6);
+						array[6]=rs.getString(7);
+						array[7]=rs.getString(8);
+						array[8]=rs.getString(9);
+						array[9]=rs.getString(10);
+						model.addRow(array);
+						
+					}
+					
+					
+				} catch (SQLException e1) {
+					showMessageDialog(null, "Konexio arazoak");
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnBezeroa.setBounds(30, 169, 85, 21);
+		contentPane.add(btnBezeroa);
+		
+		txtBezeroarenIzena = new JTextField();
+		txtBezeroarenIzena.setText("Bezeroaren izena");
+		txtBezeroarenIzena.setBounds(30, 200, 96, 19);
+		contentPane.add(txtBezeroarenIzena);
+		txtBezeroarenIzena.setColumns(10);
+		
+		txtAbizena = new JTextField();
+		txtAbizena.setText("Abizena");
+		txtAbizena.setBounds(30, 229, 96, 19);
+		contentPane.add(txtAbizena);
+		txtAbizena.setColumns(10);
 	}
 }
 
