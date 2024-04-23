@@ -29,6 +29,9 @@ public class pertsona extends JFrame{
 	private JButton btnTaula;
 	private JButton btnGehitu;
 	private JButton btnBilatu;
+	private JButton btnProduktuakGehitu;
+	private JButton btnProduktuakKendu;
+	private JButton btnProduktuakAktualizatu;
 	private JTextField txtLetra;
 	private JTextField txtIzena;
 	private JTextField txtBankuZenbakia;
@@ -37,7 +40,6 @@ public class pertsona extends JFrame{
 	private JTextField txtId;
 	private JTextField txtNanNif;
 	private JTextField txtNif;
-	private JButton btnProduktuakGehitu;
 	private JTextField txtIzena1;
 	private JTextField txtAbz1;
 	private JTextField txtAbz2;
@@ -46,10 +48,8 @@ public class pertsona extends JFrame{
 	private JTextField txtBankuZenb;
 	private JTextField txtLana;
 	private JTextField txtAdmin;
-	private JButton btnProduktuakKendu;
 	private JTextField txtName;
 	private JTextField txtNan2;
-	private JButton btnProduktuakKendu_1;
 	private JTextField textIzena1;
 	private JTextField textAbizena1;
 	private JTextField txtModifikatu1;
@@ -153,6 +153,17 @@ public class pertsona extends JFrame{
 		});
 		btnProduktuakKendu.setBounds(10, 533, 127, 23);
 		contentPane.add(btnProduktuakKendu);
+		
+		btnProduktuakAktualizatu = new JButton("Produktuak aktualizatu");
+		btnProduktuakAktualizatu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				langileak l1 = new langileak();
+				l1.aktualizatuTaula();
+			}
+		});
+		btnProduktuakAktualizatu.setBounds(10, 599, 158, 23);
+		contentPane.add(btnProduktuakAktualizatu);
+		
 		
 		txtLetra = new JTextField();
 		txtLetra.setText("Sartu izenaren lehenengo letrak");
@@ -261,10 +272,6 @@ public class pertsona extends JFrame{
 		txtNan2.setColumns(10);
 		txtNan2.setBounds(10, 578, 86, 20);
 		contentPane.add(txtNan2);
-		
-		btnProduktuakKendu_1 = new JButton("Produktuak aktualizatu");
-		btnProduktuakKendu_1.setBounds(10, 599, 158, 23);
-		contentPane.add(btnProduktuakKendu_1);
 		
 		textIzena1 = new JTextField();
 		textIzena1.setText("Izena");

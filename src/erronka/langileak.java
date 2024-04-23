@@ -38,7 +38,7 @@ public class langileak extends pertsona {
 	private JTextField txtModifikatu4;
 	private JTextField textIzena1;
 	private JTextField textAbizena1;
-	private JTextField txtTelefonoa;
+	private JTextField txtTelefonoa_1;
 		
 			public void langileaTaula() {
 				konexioa kon=new konexioa();
@@ -132,7 +132,7 @@ public class langileak extends pertsona {
 				    abz1=txtAbz1.getText();
 				    abz2=txtAbz2.getText();
 				    Nan=txtNan.getText();
-				    tel=txtTelefonoa.getText();
+				    tel=txtTelefonoa_1.getText();
 				    BankuZenb=txtBankuZenb.getText();
 				    lan_postua=txtLana.getText();
 				    admin=txtAdmin.getText();
@@ -167,7 +167,7 @@ public class langileak extends pertsona {
 				}
 			}
 		
-			public void aktualizatuTaula(ActionEvent e) {
+			public void aktualizatuTaula() {
 				try {
 				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
