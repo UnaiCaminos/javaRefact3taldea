@@ -37,11 +37,23 @@ public class pertsona extends JFrame{
 	private JTextField txtId;
 	private JTextField txtNanNif;
 	private JTextField txtNif;
+	private JButton btnProduktuakGehitu;
+	private JTextField txtIzena1;
+	private JTextField txtAbz1;
+	private JTextField txtAbz2;
+	private JTextField txtNan;
+	private JTextField txtTelefonoa_1;
+	private JTextField txtBankuZenb;
+	private JTextField txtLana;
+	private JTextField txtAdmin;
+	private JButton btnProduktuakKendu;
+	private JTextField txtName;
+	private JTextField txtNan2;
 
 	public pertsona() {
 	
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 964, 533);
+		setBounds(100, 100, 964, 760);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -60,7 +72,7 @@ public class pertsona extends JFrame{
 		contentPane.add(btnTaula);
 		
 		table = new JTable();
-		table.setBounds(203, 11, 759, 472);
+		table.setBounds(203, 11, 759, 656);
 		contentPane.add(table);
 		
 
@@ -115,7 +127,25 @@ public class pertsona extends JFrame{
 		btnProduktuenTaula.setBounds(10, 308, 127, 23);
 		contentPane.add(btnProduktuenTaula);
 		
+		btnProduktuakGehitu = new JButton("Produktuak gehitu");
+		btnProduktuakGehitu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				langileak l1 = new langileak();
+				l1.langileakGehitu();
+			}
+		});
+		btnProduktuakGehitu.setBounds(10, 330, 127, 23);
+		contentPane.add(btnProduktuakGehitu);
 		
+		btnProduktuakKendu = new JButton("Produktuak kendu");
+		btnProduktuakKendu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				langileak l1 = new langileak();
+				l1.langileaKendu();
+			}
+		});
+		btnProduktuakKendu.setBounds(10, 533, 127, 23);
+		contentPane.add(btnProduktuakKendu);
 		
 		txtLetra = new JTextField();
 		txtLetra.setText("Sartu izenaren lehenengo letrak");
@@ -164,5 +194,65 @@ public class pertsona extends JFrame{
 		txtNanNif.setColumns(10);
 		txtNanNif.setBounds(10, 130, 96, 19);
 		contentPane.add(txtNanNif);
+		
+		txtIzena1 = new JTextField();
+		txtIzena1.setText("Izena");
+		txtIzena1.setColumns(10);
+		txtIzena1.setBounds(10, 355, 86, 20);
+		contentPane.add(txtIzena1);
+		
+		txtAbz1 = new JTextField();
+		txtAbz1.setText("Lehen abizena");
+		txtAbz1.setColumns(10);
+		txtAbz1.setBounds(10, 378, 86, 20);
+		contentPane.add(txtAbz1);
+		
+		txtAbz2 = new JTextField();
+		txtAbz2.setText("Bigarren abizena");
+		txtAbz2.setColumns(10);
+		txtAbz2.setBounds(10, 400, 86, 20);
+		contentPane.add(txtAbz2);
+		
+		txtNan = new JTextField();
+		txtNan.setText("Nan-a");
+		txtNan.setColumns(10);
+		txtNan.setBounds(10, 422, 86, 20);
+		contentPane.add(txtNan);
+		
+		txtTelefonoa_1 = new JTextField();
+		txtTelefonoa_1.setText("Telefonoa");
+		txtTelefonoa_1.setColumns(10);
+		txtTelefonoa_1.setBounds(10, 445, 86, 20);
+		contentPane.add(txtTelefonoa_1);
+		
+		txtBankuZenb = new JTextField();
+		txtBankuZenb.setText("Banku zenbakia");
+		txtBankuZenb.setColumns(10);
+		txtBankuZenb.setBounds(10, 467, 86, 20);
+		contentPane.add(txtBankuZenb);
+		
+		txtLana = new JTextField();
+		txtLana.setText("Lan-postua");
+		txtLana.setColumns(10);
+		txtLana.setBounds(10, 490, 86, 20);
+		contentPane.add(txtLana);
+		
+		txtAdmin = new JTextField();
+		txtAdmin.setText("Administratzailea ");
+		txtAdmin.setColumns(10);
+		txtAdmin.setBounds(10, 512, 96, 20);
+		contentPane.add(txtAdmin);
+		
+		txtName = new JTextField();
+		txtName.setText("Izena");
+		txtName.setColumns(10);
+		txtName.setBounds(10, 557, 86, 20);
+		contentPane.add(txtName);
+		
+		txtNan2 = new JTextField();
+		txtNan2.setText("Nan-a");
+		txtNan2.setColumns(10);
+		txtNan2.setBounds(10, 578, 86, 20);
+		contentPane.add(txtNan2);
 	}
 }
