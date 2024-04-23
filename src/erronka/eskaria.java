@@ -24,6 +24,8 @@ public class eskaria extends JFrame {
 	private JTable table;
 	private JTextField txtPlaterarenIda;
 	private JTextField txtKopurua;
+	private JTextField txtBezeroarenIda;
+	private JTextField txtEskariarenIda;
 	
 	public eskaria() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -85,11 +87,13 @@ public class eskaria extends JFrame {
 				try {
 				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
-				    String id, kopurua;
+				    String id, kopurua, idBezeroa, idEskaria;
 				    id=txtPlaterarenIda.getText();
 				    kopurua=txtKopurua.getText();
+				    idBezeroa=txtBezeroarenIda.getText();
+				    idEskaria=txtEskariarenIda.getText();
 				    String query ="INSERT INTO erronkadb.eskaria"
-						+ " Values("+id+", "+kopurua+")";
+						+ " Values("+idEskaria+", "+idBezeroa+", "+id+", "+kopurua+",)";
 				    Statement stmt;
 					stmt = conexion.createStatement();
 					stmt .executeUpdate(query);
@@ -114,6 +118,18 @@ public class eskaria extends JFrame {
 		txtKopurua.setBounds(30, 93, 113, 20);
 		contentPane.add(txtKopurua);
 		txtKopurua.setColumns(10);
+		
+		txtBezeroarenIda = new JTextField();
+		txtBezeroarenIda.setText("Bezeroaren id-a");
+		txtBezeroarenIda.setColumns(10);
+		txtBezeroarenIda.setBounds(30, 117, 113, 20);
+		contentPane.add(txtBezeroarenIda);
+		
+		txtEskariarenIda = new JTextField();
+		txtEskariarenIda.setText("Eskariaren id-a");
+		txtEskariarenIda.setColumns(10);
+		txtEskariarenIda.setBounds(30, 142, 113, 20);
+		contentPane.add(txtEskariarenIda);
 	}
 }
 

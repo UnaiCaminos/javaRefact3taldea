@@ -62,6 +62,7 @@ public class pertsona extends JFrame{
 		contentPane.add(btnTaula);
 		
 		table = new JTable();
+		table = this.table;
 		table.setBounds(203, 11, 759, 472);
 		contentPane.add(table);
 		
