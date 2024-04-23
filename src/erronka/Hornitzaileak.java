@@ -14,111 +14,13 @@ import javax.swing.JTextField;
 public class Hornitzaileak extends pertsona {
 
 	private static final long serialVersionUID = 1L;
-	private JTable table;
-	private JTextField txtLetra;
-	private JTextField txtIzena;
-	private JTextField txtBankuZenbakia;
-	private JTextField txtTelefonoa;
-	private JTextField txtProduktua;
-	private JTextField txtId;
-	private JTextField txtNif;
-	private JTextField txtNanNif;
-
-	public void hornitzaileaBilatu() {
-	
-				String like;
-				like=txtLetra.getText();
-				konexioa kon=new konexioa();
-				Connection conexion = kon.getConnection();
-				String sql = "SELECT * FROM hornitzaileak WHERE EnpresarenIzena like'"+like+"%'";
-				Statement st;
-				ResultSet rs;
-				
-				DefaultTableModel model =new DefaultTableModel();
-				
-				model.addColumn("Izena");
-				model.addColumn("Kokapena");
-				model.addColumn("Telefonoa");
-				model.addColumn("korreo_elektronikoa");
-				model.addColumn("ID");
-				
-				table.setModel(model);
-				String[] array = new String[5];
-				try {
-					st=conexion.createStatement();
-					rs = st.executeQuery(sql);
-					while (rs.next()) {
-						//System.out.println(rs.getString(2));
-						array[0]=rs.getString(1);
-						array[1]=rs.getString(2);
-						array[2]=rs.getString(3);
-						array[3]=rs.getString(4);
-						array[4]=rs.getString(5);
-						model.addRow(array);
-						
-					}
-					
-					
-				} catch (SQLException e1) {
-					showMessageDialog(null, "Konexio arazoak");
-					e1.printStackTrace();
-				}
-	}
 		
-			public void hornitzaileTaulaIkusi() {
-				konexioa kon=new konexioa();
-				Connection conexion = kon.getConnection();
-				String sql = "SELECT * FROM hornitzaileak";
-				Statement st;
-				ResultSet rs;
-				
-				DefaultTableModel model =new DefaultTableModel();
-				
-				model.addColumn("id");
-				model.addColumn("Telefonoa");
-				model.addColumn("Enpresa");
-				model.addColumn("korreo_elektronikoa");
-				model.addColumn("Helbidea");
-				model.addColumn("NAN");
-				model.addColumn("Testua");
-				
-				table.setModel(model);
-				String[] array = new String[7];
-				try {
-					st=conexion.createStatement();
-					rs = st.executeQuery(sql);
-					while (rs.next()) {
-						//System.out.println(rs.getString(2));
-						array[0]=rs.getString(1);
-						array[1]=rs.getString(2);
-						array[2]=rs.getString(3);
-						array[3]=rs.getString(4);
-						array[4]=rs.getString(5);
-						array[5]=rs.getString(6);
-						array[6]=rs.getString(7);
-						model.addRow(array);
-						
-					}
-					
-					
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		
-			public void hornitzaileaGehitu() {
+			public void hornitzaileaGehitu(String Id, String nif, String izn, String prod, String tel, String bank_num) {
 				try {
 				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
-				    String izn,tel,Id,nif,prod,bank_num;
-				    Id=txtId.getText();
-				    nif=txtNanNif.getText();
-				    izn=txtIzena.getText();
-				    prod=txtProduktua.getText();
-				    tel=txtTelefonoa.getText();
-				    bank_num=txtBankuZenbakia.getText();
-				    String query ="INSERT INTO erronkadb.hornitzaileak"
+				    
+				    String query ="INSERT INTO erronkadb.hornitzailea"
 						+ " Values('"+Id+"', '"+nif+"', '"+izn+"', '"+prod+"', '"+tel+"', '"+bank_num+"')";
 				    Statement stmt;
 				
@@ -131,13 +33,11 @@ public class Hornitzaileak extends pertsona {
 				}
 			}
 	
-			public void hornitzaileaKendu(){
+			public void hornitzaileaKendu(String nif){
 				try {
 				    konexioa kon=new konexioa();
 				    Connection conexion = kon.getConnection();
-				    String nif;
-				    nif=txtNif.getText();
-				    String query ="DELETE FROM erronkadb.hornitzaileak WHERE NIF= '"+nif+"'";
+				    String query ="DELETE FROM erronkadb.hornitzailea WHERE NIF= '"+nif+"'";
 				    Statement st;
 					st = conexion.createStatement();
 					st.executeUpdate(query);
@@ -147,6 +47,7 @@ public class Hornitzaileak extends pertsona {
 					e1.printStackTrace();
 				}
 		
-	}
+	       }
 }
+
 
