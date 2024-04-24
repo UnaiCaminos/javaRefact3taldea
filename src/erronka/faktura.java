@@ -74,11 +74,10 @@ public class faktura extends JFrame {
                     String Id;
                     Id=txtId0.getText();
 		            String query = "SELECT izena, prezioa, kopurua, NAN, platera, abizena, abizena2"
-		            		+ " FROM eskatutakoPlaterak "
-		            		+ " JOIN bezeroa ON eskatutakoplaterak.bezeroa_idBezeroa = bezeroa.idBezeroa "
-		            		+ " JOIN platerak ON eskatutakoplaterak.platerak_idplaterak = platerak.idPlaterak "
-		            		+ " JOIN eskaera ON eskatutakoplaterak.ideskatutakoPlaterak = eskaera.eskatutakoplaterak_ideskatutakoPlaterak "
-		            		+ " WHERE eskaera.ideskaera ="+Id;
+		            		+ " FROM eskaria "
+		            		+ " JOIN bezeroa ON eskaria.bezeroa_idBezeroa = bezeroa.idBezeroa "
+		            		+ " JOIN platerak ON eskaria.platerak_idplaterak = platerak.idPlaterak "
+		            		+ " WHERE eskaria.ideskariak ="+Id;
 		            PreparedStatement preparedStatement = connection.prepareStatement(query);
 		            ResultSet resultSet = preparedStatement.executeQuery();
 		            
@@ -108,7 +107,7 @@ public class faktura extends JFrame {
 		            float y = 725;
 		            
 		            try {
-		              com.itextpdf.text.Image logo = com.itextpdf.text.Image.getInstance("..//javaRefact3taldea//logoa//logoa3ebal.jpg"); //Logoa dagoen ruta
+		              com.itextpdf.text.Image logo = com.itextpdf.text.Image.getInstance("..//javaRefact3taldea//logoa//logoa3ebal.ico"); //Logoa dagoen ruta
 		              logo.scaleToFit(200, 100); // Logoaren tamainua
 		              logo.setAbsolutePosition(x, y); // Logoaren posizioa 
 		              document.add(logo);
@@ -203,7 +202,7 @@ public class faktura extends JFrame {
 				Connection conexion = kon.getConnection();
 				String Id;
 				Id=txtIdEskaria.getText();
-				String sql = "SELECT ideskaera FROM eskaera WHERE Id='"+Id+"'";
+				String sql = "SELECT * FROM eskaria WHERE ideskariak='"+Id+"'";
 				Statement st;
 				ResultSet rs;
 				
